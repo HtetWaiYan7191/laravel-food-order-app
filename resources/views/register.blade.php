@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="login-form">
-        <form action="" method="">
+        <form action="{{ route('register')}}" method="POST">
             @csrf
             <div class="form-group">
                 <label>Username</label>
@@ -31,7 +31,7 @@
         <div class="register-link">
             <p>
                 Already have account?
-                <a href="{{ url('/') }}">Sign In</a>
+                <a href="{{ route('auth#loginPage') }}">Sign In</a>
             </p>
         </div>
     </div>
