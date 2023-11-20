@@ -7,10 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    this is dashboard
+    Role - {{ Auth::user()->role }}
+    <h1>User Home</h1>
     <form action="{{ route('logout')}}" method="POST">
         @csrf
-        <button type="submit">Log Out</button>
+        <button type="submit">Logout</button>
     </form>
 </body>
 </html>

@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    Role {{Auth::user()->role}}
     <h2>Admin Category Page</h2>
+
+    <form action="{{ route('logout')}}" method="POST">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>
