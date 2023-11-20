@@ -64,17 +64,17 @@
                             </a>
                         </li> --}}
                         <li>
-                            <a href="{{ route('category#list') }}">
+                            <a href="">
                                 <i class="fas fa-chart-bar"></i>Category</a>
                         </li>
 
                         <li>
-                            <a href="{{ route('products#list') }}">
+                            <a href="">
                                 <i class="fa-sharp fa-solid fa-pizza-slice"></i>Products</a>
                         </li>
 
                         <li>
-                            <a href="{{ route('admin#orderList') }}">
+                            <a href="">
                                 <i class="fa-solid fa-list"></i>Orders</a>
                         </li>
                         {{-- <li>
@@ -161,13 +161,13 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    @if (Auth::user()->image == null)
+                                                    {{-- @if (Auth::user()->image == null)
                                                         <img src="{{ asset('image/defaultUser.png') }}"
                                                             alt="">
                                                     @else
                                                         <img src="{{ asset('storage/'.Auth::user()->image) }}"
                                                             alt="John Doe" />
-                                                    @endif
+                                                    @endif --}}
 
                                                 </div>
                                                 <div class="content">
@@ -180,21 +180,21 @@
 
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="{{route('admin#details')}}">
+                                                    <a href="">
                                                         <i class="fa-solid fa-user"></i> Account</a>
                                                 </div>
                                             </div>
 
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="{{ route('admin#list')}}">
+                                                    <a href="">
                                                         <i class="fa-solid fa-users"></i> Admin List</a>
                                                 </div>
                                             </div>
 
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="{{ route('admin#changePasswordPage') }}">
+                                                    <a href="">
                                                         <i class="fa-solid fa-lock "></i> Change Password</a>
 
                                                 </div>

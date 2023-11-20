@@ -1,18 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    Role {{Auth::user()->role}}
-    <h2>Admin Category Page</h2>
+@extends('admin.layouts.master')
 
-    <form action="{{ route('logout')}}" method="POST">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
-</body>
-</html>
+@section('title', 'Category List Page')
+
+@section('content')
+
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <div class="overview-wrap">
+                                <h2 class="title-1">Category List</h2>
+
+                            </div>
+                        </div>
+                        <div class="table-data__tool-right">
+                            <a href="">
+                                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    <i class="zmdi zmdi-plus"></i>Add Category
+                                </button>
+                            </a>
+                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                CSV download
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+                    {{-- SEARCH BOX START --}}
+                    <div class="row">
+                        <div class="col-3">
+                            <h4 class="text-secondary">Search key: <span class="text-success">hello</span>
+                            </h4>
+                        </div>
+                        <div class="col-3 offset-6">
+                            
+                        </div>
+                    </div>
+                    {{-- SEARCH BOX END --}}
+
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>CATEGORY NAME</th>
+                                    <th>CREATED DATE</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="tr-shadow my-2">
+                                    <td>1</td>
+                                    <td>
+                                        <span class="">hello</span>
+                                    </td>
+                                    <td class="">2020/12/2</td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                            <button class="item" data-toggle="tooltip" data-placement="top"
+                                                title="Send">
+                                                <i class="zmdi zmdi-mail-send"></i>
+                                            </button>
+                                            <a href="">
+                                                <button class="item" data-toggle="tooltip" data-placement="top"
+                                                    title="Edit">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </button>
+                                            </a>
+                                            <a href="">
+                                                <button class="item" data-toggle="tooltip" data-placement="top"
+                                                    title="Delete">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </a>
+                                            <button class="item" data-toggle="tooltip" data-placement="top"
+                                                title="More">
+                                                <i class="zmdi zmdi-more"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+@endsection
