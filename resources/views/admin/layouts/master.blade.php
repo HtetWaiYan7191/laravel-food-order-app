@@ -64,7 +64,7 @@
                             </a>
                         </li> --}}
                         <li>
-                            <a href="">
+                            <a href="{{ route('category#list')}}">
                                 <i class="fas fa-chart-bar"></i>Category</a>
                         </li>
 

@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div class="table-data__tool-right">
-                            <a href="">
+                            <a href={{ route('category#createPage') }}>
                                 <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                                     <i class="zmdi zmdi-plus"></i>Add Category
                                 </button>
@@ -54,13 +54,14 @@
 
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody>     
+                                @foreach ($categories as $category )
                                 <tr class="tr-shadow my-2">
-                                    <td>1</td>
+                                    <td>{{ $category->id }}</td>
                                     <td>
-                                        <span class="">hello</span>
+                                        <span class="">{{ $category->name }}</span>
                                     </td>
-                                    <td class="">2020/12/2</td>
+                                    <td class="">{{ $category->created_at->format('j-F-Y')}}</td>
                                     <td>
                                         <div class="table-data-feature">
                                             <button class="item" data-toggle="tooltip" data-placement="top"
@@ -87,6 +88,8 @@
                                     </td>
 
                                 </tr>
+                                @endforeach
+                                
 
 
 
