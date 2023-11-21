@@ -25,6 +25,10 @@ class CategoryController extends Controller
        return redirect()->route('category#list')->with(['success' => 'Category created successfully']);
     }
 
+    public function delete($id) {
+        dd($id);
+    }
+
     //helper functions for checking validation 
 
     private function categoryValidation($request) {

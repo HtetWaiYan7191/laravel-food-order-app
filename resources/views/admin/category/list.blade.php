@@ -74,7 +74,7 @@
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </button>
                                             </a>
-                                            <a href="">
+                                            <a href="{{ route('category#delete', $category->id)}}">
                                                 <button class="item" data-toggle="tooltip" data-placement="top"
                                                     title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
