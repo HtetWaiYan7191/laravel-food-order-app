@@ -27,7 +27,7 @@ class CategoryController extends Controller
 
     public function delete($id) {
         Category::where('id', $id)->delete();
-        return back();
+        return back()->with(['deleteMessage' => 'Category deleted successfully']);
     }
 
     //helper functions for checking validation 
