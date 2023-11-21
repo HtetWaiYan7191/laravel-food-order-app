@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     //redirect to category list 
     public function list() {
-        $categories = Category::orderBy('id', 'desc')->get();
+        $categories = Category::orderBy('id', 'desc')->paginate(4);
         return view('admin.category.list', compact('categories'));
     }
 

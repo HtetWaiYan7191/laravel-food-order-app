@@ -128,6 +128,15 @@
 
                         </tbody>
                     </table>
+
+                    {{-- PAGINATOR UI START --}}
+
+                    <div class=" mt-3">
+                        {{ $categories->links() }}
+                    </div>
+
+                    {{-- PAGINATOR UI END  --}}
+
                     @else
                     <h1 class=" text-secondary text-center">There is no data</h1>
                        @endif
