@@ -29,6 +29,20 @@
                         </div>
                     </div>
 
+                    @if (session('success'))
+                    {{-- BOOTSTRAP ALERT BOX  --}}
+                    <div class="row">
+                        <div class="col-12 offset-8">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i class="fa-solid fa-check"></i> {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    {{-- BOOTSTRAP ALERT BOX END  --}}
+                    @endif
 
 
 
@@ -45,57 +59,61 @@
                     {{-- SEARCH BOX END --}}
 
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table table-data2">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>CATEGORY NAME</th>
-                                    <th>CREATED DATE</th>
+                       @if ($categories->count())
+                       <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>CATEGORY NAME</th>
+                                <th>CREATED DATE</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>     
-                                @foreach ($categories as $category )
-                                <tr class="tr-shadow my-2">
-                                    <td>{{ $category->id }}</td>
-                                    <td>
-                                        <span class="">{{ $category->name }}</span>
-                                    </td>
-                                    <td class="">{{ $category->created_at->format('j-F-Y')}}</td>
-                                    <td>
-                                        <div class="table-data-feature">
+                            </tr>
+                        </thead>
+                        <tbody>     
+                            @foreach ($categories as $category )
+                            <tr class="tr-shadow my-2">
+                                <td>{{ $category->id }}</td>
+                                <td>
+                                    <span class="">{{ $category->name }}</span>
+                                </td>
+                                <td class="">{{ $category->created_at->format('j-F-Y')}}</td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                            title="Send">
+                                            <i class="zmdi zmdi-mail-send"></i>
+                                        </button>
+                                        <a href="">
                                             <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="Send">
-                                                <i class="zmdi zmdi-mail-send"></i>
+                                                title="Edit">
+                                                <i class="zmdi zmdi-edit"></i>
                                             </button>
-                                            <a href="">
-                                                <button class="item" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </button>
-                                            </a>
-                                            <a href="{{ route('category#delete', $category->id)}}">
-                                                <button class="item" data-toggle="tooltip" data-placement="top"
-                                                    title="Delete">
-                                                    <i class="zmdi zmdi-delete"></i>
-                                                </button>
-                                            </a>
+                                        </a>
+                                        <a href="{{ route('category#delete', $category->id)}}">
                                             <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="More">
-                                                <i class="zmdi zmdi-more"></i>
+                                                title="Delete">
+                                                <i class="zmdi zmdi-delete"></i>
                                             </button>
-                                        </div>
-                                    </td>
+                                        </a>
+                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                            title="More">
+                                            <i class="zmdi zmdi-more"></i>
+                                        </button>
+                                    </div>
+                                </td>
 
-                                </tr>
-                                @endforeach
-                                
+                            </tr>
+                            @endforeach
+                            
 
 
 
 
-                            </tbody>
-                        </table>
+                        </tbody>
+                    </table>
+                    @else
+                    <h1 class=" text-secondary text-center">There is no data</h1>
+                       @endif
                     </div>
                     <!-- END DATA TABLE -->
                 </div>
