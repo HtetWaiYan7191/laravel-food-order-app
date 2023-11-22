@@ -10,7 +10,11 @@ class CategoryController extends Controller
 {
     //redirect to category list 
     public function list() {
-        $categories = Category::orderBy('id', 'desc')->paginate(4);
+        $categories = Category::when(request('key'), function($query){
+                        $query->where('name', 'like', '%'. request('key'). '%');
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(4);
         return view('admin.category.list', compact('categories'));
     }
 
@@ -23,6 +27,18 @@ class CategoryController extends Controller
        $categories = $this->getCategoryData($request);
        Category::create($categories);
        return redirect()->route('category#list')->with(['success' => 'Category created successfully']);
+    }
+
+    public function edit($id) {
+        $category = Category::find($id);
+        return view('admin.category.edit', compact('category'));
+    }
+
+    public function update(Request $request) {
+        $this->categoryValidation($request);
+        $category = $this->getCategoryData($request);
+        Category::where('id', $request->id)->update($category);
+        return redirect()->route('category#list')->with(['success' => 'Category updated successfully ']);
     }
 
     public function delete($id) {

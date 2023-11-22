@@ -59,21 +59,35 @@
 
                     {{-- DELETE ALERT BOX START --}}
 
-
-
-
-
                     {{-- SEARCH BOX START --}}
                     <div class="row">
                         <div class="col-3">
-                            <h4 class="text-secondary">Search key: <span class="text-success">hello</span>
+                            <h4 class="text-secondary">Search key: <span class="text-success">{{ request('key')}}</span>
                             </h4>
                         </div>
                         <div class="col-3 offset-6">
-                            
+                            <form action="{{ route('category#list')}}" method="GET">
+                                @csrf
+                                <div class="d-flex">
+                                    <input type="text" name="key" class="form-control" placeholder="Search"
+                                        value="{{ request('key')}}">
+                                    <button type="submit" class="btn btn-dark">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     {{-- SEARCH BOX END --}}
+
+                      {{-- TOTAL BOX START  --}}
+                      <div class="row">
+                        <div class="col-5">
+                            <h3 class=""><i class="fa-solid fa-database "></i> <span>{{ $categories->total() }}</span>
+                            </h3>
+                        </div>
+                    </div>
+                    {{-- TOTAL BOX END --}}
 
                     <div class="table-responsive table-responsive-data2">
                        @if ($categories->count())
@@ -100,7 +114,7 @@
                                             title="Send">
                                             <i class="zmdi zmdi-mail-send"></i>
                                         </button>
-                                        <a href="">
+                                        <a href="{{ route('category#edit', $category->id)}}">
                                             <button class="item" data-toggle="tooltip" data-placement="top"
                                                 title="Edit">
                                                 <i class="zmdi zmdi-edit"></i>

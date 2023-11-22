@@ -20,6 +20,8 @@ Route::middleware([
         Route::get('create', [CategoryController::class, 'createPage'])->name('category#createPage');
         Route::post('create', [CategoryController::class, 'create'])->name('category#create');
         Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('category#delete');
+        Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('category#edit');
+        Route::post('update', [CategoryController::class, 'update'])->name('category#update');
     });
 
     //user
