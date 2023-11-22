@@ -50,7 +50,7 @@ class CategoryController extends Controller
 
     private function categoryValidation($request) {
         Validator::make($request->all(), [
-            'categoryName' => 'required|min:4|unique:categories,name'
+            'categoryName' => 'required|min:4|unique:categories,name,'.$request->id,
         ],[
             'categoryName.required' => 'Category Name should be filled',
         ])->validate();
