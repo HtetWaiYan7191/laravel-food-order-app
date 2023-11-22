@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -14,6 +17,17 @@ class AdminController extends Controller
 
     public function updatePassword(Request $request) {
         $this->passwordValidation($request);
+        $user = User::select('password')->where('id', Auth::user()->id)->first();
+        $dbPassword = $user->password;
+        if(Hash::check($request->oldPassword, $dbPassword)) {
+            $data = [
+                'password' => Hash::make($request->newPassword)
+            ];
+            User::where('id', Auth::user()->id)->update($data);
+            return redirect()->route('category#list')->with(['success' => 'Password Changed successfully']);
+           
+        }
+        return back()->with(['fail' => 'The old password does not match']);
     }
 
     private function passwordValidation($request) {

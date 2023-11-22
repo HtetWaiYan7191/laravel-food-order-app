@@ -44,6 +44,8 @@
                     {{-- BOOTSTRAP ALERT BOX END  --}}
                     @endif
 
+                  
+
                     {{-- DELETE ALERT BOX START --}}
                     @if (session('deleteMessage'))
                     <div class="row">

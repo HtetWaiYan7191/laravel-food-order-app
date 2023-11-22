@@ -5,11 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     //dashboard
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');

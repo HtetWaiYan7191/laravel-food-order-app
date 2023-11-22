@@ -21,12 +21,35 @@
                             </div>
                             <hr>
                             {{-- PASSWORD CHANGE SUCCESS BOX  START  --}}
-                         
+                            @if (session('success'))
+                            {{-- BOOTSTRAP ALERT BOX  --}}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <i class="fa-solid fa-check"></i> {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            {{-- BOOTSTRAP ALERT BOX END  --}}
+                            @endif
 
                             {{-- PASSWORD CHANGE SUCCESS BOX END  --}}
 
                             {{-- PASSWORD CHANGE FAIL BOX START  --}}
-                     
+                            @if (session('fail'))
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <i class="fa-solid fa-check"></i> {{ session('fail') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             {{-- PASSWORD CHANGE FAIL BOX END  --}}
 
                             <form action="{{ route('admin#updatePassword')}}" method="post" novalidate="novalidate">
