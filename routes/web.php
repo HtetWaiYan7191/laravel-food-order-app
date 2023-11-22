@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 
 Route::middleware([
@@ -14,14 +15,22 @@ Route::middleware([
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
     // categories 
+    Route::middleware(['admin_auth'])->group(function () {
+        //categories 
+        Route::prefix('category')->group(function () {
+            Route::get('list', [CategoryController::class, 'list'])->name('category#list');
+            Route::get('create', [CategoryController::class, 'createPage'])->name('category#createPage');
+            Route::post('create', [CategoryController::class, 'create'])->name('category#create');
+            Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('category#delete');
+            Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('category#edit');
+            Route::post('update', [CategoryController::class, 'update'])->name('category#update');
+        });
 
-    Route::prefix('category')->middleware('admin_auth')->group(function () {
-        Route::get('list', [CategoryController::class, 'list'])->name('category#list');
-        Route::get('create', [CategoryController::class, 'createPage'])->name('category#createPage');
-        Route::post('create', [CategoryController::class, 'create'])->name('category#create');
-        Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('category#delete');
-        Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('category#edit');
-        Route::post('update', [CategoryController::class, 'update'])->name('category#update');
+        //admin
+        Route::prefix('admin/account')->group(function() {
+            Route::get('change-password', [AdminController::class, 'changePasswordPage'])->name('admin#changePasswordPage');
+            Route::post('update-password', [AdminController::class, 'updatePassword'])->name('admin#updatePassword');
+        });
     });
 
     //user
