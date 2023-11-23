@@ -24,7 +24,7 @@ class AdminController extends Controller
                 'password' => Hash::make($request->newPassword)
             ];
             User::where('id', Auth::user()->id)->update($data);
-            return redirect()->route('category#list')->with(['success' => 'Password Changed successfully']);
+            return back()->with(['success' => 'Password Changed successfully']);
            
         }
         return back()->with(['fail' => 'The old password does not match']);
