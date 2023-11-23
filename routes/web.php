@@ -41,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // login, register
-Route::redirect('/', 'loginPage');
-Route::get('loginPage',[AuthController::class, 'loginPage'])->name('auth#loginPage');
-Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
+Route::middleware(['admin_auth'])->group(function() {
+    Route::redirect('/', 'loginPage');
+    Route::get('loginPage',[AuthController::class, 'loginPage'])->name('auth#loginPage');
+    Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
+});
