@@ -30,6 +30,32 @@ class AdminController extends Controller
         return back()->with(['fail' => 'The old password does not match']);
     }
 
+    //redirect to admin account detail page 
+
+    public function detail() {
+        return view('admin.account.detail');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private function passwordValidation($request) {
         Validator::make($request->all(), [
             'oldPassword' => 'required|min:6',

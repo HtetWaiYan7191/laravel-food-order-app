@@ -148,7 +148,7 @@
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             @if (Auth::user()->image == null)
-                                                <img src="{{ asset('image/defaultUser.png') }}" alt="">
+                                                <img src="{{ asset('image/defaultUser.png') }}" alt="default-photo">
                                             @else
                                                 <img src="{{ asset('storage/'.Auth::user()->image) }}"
                                                     alt="John Doe" />
@@ -180,7 +180,7 @@
 
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="">
+                                                    <a href="{{ route('admin#detail')}}">
                                                         <i class="fa-solid fa-user"></i> Account</a>
                                                 </div>
                                             </div>
