@@ -36,6 +36,10 @@ class AdminController extends Controller
         return view('admin.account.detail');
     }
 
+    public function edit() {
+        return view('admin.account.edit');
+    }
+
 
 
 

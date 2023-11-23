@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('change-password', [AdminController::class, 'changePasswordPage'])->name('admin#changePasswordPage');
             Route::post('update-password', [AdminController::class, 'updatePassword'])->name('admin#updatePassword');
             Route::get('detail', [AdminController::class, 'detail'])->name('admin#detail');
+            Route::get('edit', [AdminController::class, 'edit'])->name('admin#edit');
         });
     });
 

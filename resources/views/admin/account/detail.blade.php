@@ -44,7 +44,7 @@
 
                                     {{-- edit button --}}
                                     <div class="mt-3 rounded">
-                                        <a href="">
+                                        <a href="{{ route('admin#edit')}}">
                                             <button class="text-white btn bg-dark">
                                                 <i class="fa-solid fa-pen-to-square mr-3"></i> Edit Profile
                                             </button>
