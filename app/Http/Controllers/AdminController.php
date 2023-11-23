@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,12 @@ class AdminController extends Controller
         return view('admin.account.edit');
     }
 
+    public function update(Request $request, $id) {
+        $this->createValidation($request);
+        $data = $this->getData($request);
+        User::where('id', $id)->update($data);
+        return redirect()->route('admin#detail')->with(['success' => 'Account updated successfully']);
+    }
 
 
 
@@ -70,5 +77,31 @@ class AdminController extends Controller
             'newPassword.required' => 'Need to be Filled ',
             'confirmPassword.required' => 'Need to be Filled ',
         ])->validate();
+    }
+
+    private function createValidation($request) {
+        Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.Auth::user()->id,
+            'image' => 'mimes:png,jpg,jpeg,web|file',
+            'gender' => 'nullable|string',
+            'phone' => 'numeric|min:9|nullable',
+            'address' => 'nullable|string',
+        ],
+        [
+
+        ])->validate();
+    }
+
+    private function getData($request) {
+        return [
+            'name' => $request->name,
+            'email' => $request->email,
+            'image' => $request->image,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'updated_at' => Carbon::now(),
+        ];
     }
 }

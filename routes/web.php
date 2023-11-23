@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update-password', [AdminController::class, 'updatePassword'])->name('admin#updatePassword');
             Route::get('detail', [AdminController::class, 'detail'])->name('admin#detail');
             Route::get('edit', [AdminController::class, 'edit'])->name('admin#edit');
+            Route::post('update/{id}', [AdminController::class, 'update'])->name('admin#update');
         });
     });
 

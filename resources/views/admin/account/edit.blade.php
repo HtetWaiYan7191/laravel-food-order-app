@@ -25,7 +25,7 @@
 
                             </div>
                             <hr>
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('admin#update', Auth::user()->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-4 offset-1">
