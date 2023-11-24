@@ -69,7 +69,7 @@
                         </li>
 
                         <li>
-                            <a href="">
+                            <a href="{{ route('product#list') }}">
                                 <i class="fa-sharp fa-solid fa-pizza-slice"></i>Products</a>
                         </li>
 

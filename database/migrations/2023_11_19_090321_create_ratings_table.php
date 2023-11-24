@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('product_id');
+            $table->unSignedBigInteger('user_id')->constrained('users');
+            $table->unSignedBigInteger('product_id')->constrained('products');
             $table->integer('rating_count');
             $table->integer('status');
             $table->string('message')->nullable();

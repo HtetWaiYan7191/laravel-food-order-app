@@ -3,12 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Rating;
+use Laravel\Sanctum\HasApiTokens;
+use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -33,6 +34,18 @@ class User extends Authenticatable
         'phone',
         'role',
     ];
+
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
+
+    public function carts() {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function rating() {
+        return $this->hasMany(Rating::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

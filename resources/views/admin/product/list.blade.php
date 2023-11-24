@@ -118,7 +118,7 @@
                                     @foreach ($pizzas as $pizza)
                                         <tr class="tr-shadow my-2">
                                             <td class="col-2 img-thumbnail shadow-sm"><img
-                                                    src="{{ asset('storage/' . $pizza->image) }}" alt=""></td>
+                                                    src="{{ asset('storage/'.$pizza->image ) }}" alt="{{ $pizza->name}}"></td>
                                             <td class="col-2">
                                                 <span class="">{{ $pizza->name }}</span>
                                             </td>
@@ -139,7 +139,7 @@
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
                                                     </a>
-                                                    <a href="">
+                                                    <a href="{{ route('product#delete', $pizza->id)}}">
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
