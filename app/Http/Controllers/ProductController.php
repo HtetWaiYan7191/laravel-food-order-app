@@ -26,12 +26,18 @@ class ProductController extends Controller
         $products = $this->getData($request);
         if($request->hasFile('image')) {
             $fileName = uniqid(). $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public'.$fileName);
+            $request->file('image')->storeAs('public', $fileName);
             $products['image'] = $fileName;
         }
 
         Product::create($products);
         return redirect()->route('product#list')->with(['success' => 'Product created successfully']);
+    }
+
+    public function delete($id) {
+        Product::where('id', $id)->delete();
+        return back()->with(['success' => 'Product Delete successfully']);
+
     }
 
     private function getData($request) {
