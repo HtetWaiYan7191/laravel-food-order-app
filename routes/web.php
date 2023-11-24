@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 Route::middleware(['auth'])->group(function () {
@@ -20,6 +21,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('category#delete');
             Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('category#edit');
             Route::post('update', [CategoryController::class, 'update'])->name('category#update');
+        });
+
+        //products
+        Route::prefix('product')->group(function() {
+            Route::get('list', [ProductController::class, 'list'])->name('product#list');
+            Route::get('new', [ProductController::class, 'new'])->name('product#new');
+            Route::post('create', [ProductController::class, 'create'])->name('product#create');
+            Route::get('delete{id}', [ProductController::class, 'delete'])->name('product#delete');
         });
 
         //admin
