@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,6 +29,18 @@ class DatabaseSeeder extends Seeder
             'gender' => 'male',
             'role' => 'admin',
             'password' => Hash::make('password')
+        ]);
+
+        Category::create([
+            'name' => 'Chicken Pizza'
+        ]);
+
+        Category::create([
+            'name' => 'Port Pizza'
+        ]);
+
+        Category::create([
+            'name' => 'Cheesy Pizza'
         ]);
     }
 }
