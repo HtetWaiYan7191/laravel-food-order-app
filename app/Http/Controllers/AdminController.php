@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -44,25 +45,24 @@ class AdminController extends Controller
     public function update(Request $request, $id) {
         $this->createValidation($request);
         $data = $this->getData($request);
+
+        if($request->hasFile('image')) {
+            $user = User::where('id', $id)->first();
+            $dbImage = $user->image;
+
+            if($dbImage != null) {
+                Storage::delete('public/'.$dbImage);
+                dd($dbImage);
+            }
+
+            $fileName = uniqid().$request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public', $fileName);
+            $data['image'] = $fileName;
+        }
+        
         User::where('id', $id)->update($data);
         return redirect()->route('admin#detail')->with(['success' => 'Account updated successfully']);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -83,7 +83,7 @@ class AdminController extends Controller
         Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.Auth::user()->id,
-            'image' => 'mimes:png,jpg,jpeg,web|file',
+            'image' => 'mimes:png,jpg,jpeg,web,webp|file',
             'gender' => 'nullable|string',
             'phone' => 'numeric|min:9|nullable',
             'address' => 'nullable|string',
@@ -97,7 +97,6 @@ class AdminController extends Controller
         return [
             'name' => $request->name,
             'email' => $request->email,
-            'image' => $request->image,
             'gender' => $request->gender,
             'phone' => $request->phone,
             'address' => $request->address,

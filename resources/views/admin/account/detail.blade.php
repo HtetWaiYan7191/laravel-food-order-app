@@ -39,7 +39,7 @@
                                         <img src="{{ asset('image/defaultUser.png') }}" class=" img-thumbnail"
                                             alt="">
                                     @else
-                                        <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="{{Auth::user()->name}}" />
+                                        <img src="{{ asset('storage/'. Auth::user()->image ) }}" alt="{{Auth::user()->name}}" />
                                     @endif
 
                                     {{-- edit button --}}
@@ -62,7 +62,7 @@
                                     <h4 class=" my-4 "><i class="fa-solid fa-envelope mr-3"></i>{{ Auth::user()->email }}
                                     </h4>
                                     <h4 class=" my-4 "><i
-                                            class="fa-solid fa-mars-and-venus mr-3"></i>Gender</h4>
+                                            class="fa-solid fa-mars-and-venus mr-3"></i>{{ Auth::user()->gender}}</h4>
                                             @if (Auth::user()->phone != null)
                                                  <h4 class=" my-4 "><i class="fa-solid fa-phone mr-3"></i>{{ Auth::user()->phone }}</h4>
                                             @endif
