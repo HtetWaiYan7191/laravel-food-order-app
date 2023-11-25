@@ -56,15 +56,18 @@
                     {{-- SEARCH BOX START --}}
                     <div class="row">
                         <div class="col-3">
+                            @if (request('key'))
                             <h4 class="text-secondary">Search key: <span class="text-success">{{ request('key') }}</span>
                             </h4>
+                            @endif
+                            
                         </div>
                         <div class="col-3 offset-6">
                             <form action="{{ route('product#list') }}" method="GET">
                                 @csrf
                                 <div class="d-flex">
                                     <input type="text" name="key" class="form-control" placeholder="Search"
-                                        value="{{ request('key') }}">
+                                        value="{{ request('key')}}">
                                     <button type="submit" class="btn btn-dark">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
