@@ -161,13 +161,11 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    {{-- @if (Auth::user()->image == null)
-                                                        <img src="{{ asset('image/defaultUser.png') }}"
-                                                            alt="">
+                                                    @if (Auth::user()->image == null)
+                                                        <img src="{{ asset('image/defaultUser.png')}}" alt="default-photo">
                                                     @else
-                                                        <img src="{{ asset('storage/'.Auth::user()->image) }}"
-                                                            alt="John Doe" />
-                                                    @endif --}}
+                                                        <img src="{{ asset('storage/'.Auth::user()->image)}}" alt="{{Auth::user()->name}} photo">
+                                                    @endif
 
                                                 </div>
                                                 <div class="content">
