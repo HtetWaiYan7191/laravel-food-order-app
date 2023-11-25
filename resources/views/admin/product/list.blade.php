@@ -136,7 +136,7 @@
                                                         title="Send">
                                                         <i class="zmdi zmdi-mail-send"></i>
                                                     </button>
-                                                    <a href="{">
+                                                    <a href="{{ route('product#edit', $pizza->id)}}">
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>

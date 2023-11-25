@@ -26,7 +26,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label class="control-label mb-1">Name</label>
-                                    <input id="cc-pament" name="name" type="text"
+                                    <input id="cc-pament" name="name" value="{{ old('name')}}" type="text"
                                         class="form-control @error('name') is-invalid
 
                                     @enderror "
@@ -46,7 +46,7 @@
 
                                     @enderror"
                                         >
-                                        <option value="">Choose Your Category</option>
+                                        <option value="{{ old('category')}}">Choose Your Category</option>
                                         @foreach ($categories as $category )
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -66,7 +66,7 @@
                                         class="form-control @error('description') is-invalid
 
                                     @enderror"
-                                        ></textarea>
+                                        >{{ old('description')}}</textarea>
 
                                     @error('description')
                                         <div class="invalid-feedback">
@@ -92,7 +92,7 @@
 
                                 <div class="form-group">
                                     <label for="" class="control-label mb-1">Price</label>
-                                    <input type="number" placeholder="Price"
+                                    <input type="number" value="{{ old('price')}}" placeholder="Price"
                                         class="form-control @error('price') is-invalid
 
                                     @enderror"
@@ -107,7 +107,7 @@
 
                                 <div class="form-group">
                                     <label for="" class="control-label mb-1">Waiting Time</label>
-                                    <input type="number" placeholder="Waiting Time In Minutes"
+                                    <input type="number" value="{{ old('waitingTime')}}" placeholder="Waiting Time In Minutes"
                                         class="form-control @error('price') is-invalid
 
                                     @enderror"
