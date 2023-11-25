@@ -52,7 +52,6 @@ class AdminController extends Controller
 
             if($dbImage != null) {
                 Storage::delete('public/'.$dbImage);
-                dd($dbImage);
             }
 
             $fileName = uniqid().$request->file('image')->getClientOriginalName();
