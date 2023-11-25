@@ -12,7 +12,9 @@ class ProductController extends Controller
 {
     // list
     public function list() {
-        $pizzas = Product::with('category')->get();
+        $pizzas = Product::with('category')
+        ->orderBy('created_at', 'desc')
+        ->paginate(4);
         return view('admin.product.list', compact('pizzas'));
     }
 

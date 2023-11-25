@@ -77,7 +77,7 @@
                     {{-- TOTAL BOX START  --}}
                     <div class="row">
                         <div class="col-5">
-                            <h3 class=""><i class="fa-solid fa-database "></i> <span>Total - {{$pizzas->count()}}
+                            <h3 class=""><i class="fa-solid fa-database "></i> <span>Total - {{$pizzas->total()}}
                                    </span>
                             </h3>
                         </div>
@@ -169,9 +169,9 @@
 
                         {{-- PAGINATOR UI START --}}
 
-                        {{-- <div class="mt-3">
+                        <div class="mt-3">
                             {{ $pizzas->links() }}
-                        </div> --}}
+                        </div>
 
                         {{-- PAGINATOR UI END  --}}
                     </div>
