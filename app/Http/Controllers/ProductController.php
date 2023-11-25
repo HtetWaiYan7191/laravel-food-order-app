@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
@@ -39,9 +40,35 @@ class ProductController extends Controller
         return redirect()->route('product#list')->with(['success' => 'Product created successfully']);
     }
 
+    public function edit($id) {
+        $product = Product::where('id', $id)->first();
+        $categories = Category::select('id', 'name')->get();
+        return view('admin.product.edit', compact('product', 'categories'));
+    }
+
+    public function update($id, Request $request) {
+        $this->productValidation($request);
+        $product = $this->getData($request);
+        
+        if($request->hasFile('image')) {
+            $dbProduct = Product::where('id', $request->id)->first();
+            $dbImage = $dbProduct->image;
+
+            if($dbImage != null) {
+                Storage::delete('public/'.$dbImage);
+            }
+            $fileName = uniqid().$request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public', $fileName);
+            $product['image'] = $fileName;
+        }
+
+        Product::where('id', $request->id)->update($product);
+        return redirect()->route('product#list')->with(['success' => 'Proudct update successfully ']);
+    }
+
     public function delete($id) {
         Product::where('id', $id)->delete();
-        return back()->with(['success' => 'Product Delete successfully']);
+        return redirect()->route('product#list')->with(['success' => 'Product delete successfully']);
 
     }
 
