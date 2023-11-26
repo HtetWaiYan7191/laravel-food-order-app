@@ -27,6 +27,11 @@ class ProductController extends Controller
         return view('admin.product.new', compact('categories'));
     }
 
+    public function show($id) {
+        $product = Product::where('id', $id)->first();
+        return view('admin.product.show', compact('product'));
+    }
+
     public function create(Request $request) {
         $this->productValidation($request);
         $products = $this->getData($request);

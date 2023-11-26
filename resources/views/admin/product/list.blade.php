@@ -132,10 +132,12 @@
                                             </td>
                                             <td>
                                                 <div class="table-data-feature">
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="Send">
-                                                        <i class="zmdi zmdi-mail-send"></i>
-                                                    </button>
+                                                    <a href="{{ route('product#show', $pizza->id)}}">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                                            title="Show">
+                                                            <i class="zmdi zmdi-mail-send"></i>
+                                                        </button>
+                                                    </a>
                                                     <a href="{{ route('product#edit', $pizza->id)}}">
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Edit">
