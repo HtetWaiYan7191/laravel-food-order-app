@@ -185,7 +185,7 @@
 
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="">
+                                                    <a href="{{ route('admin#list')}}">
                                                         <i class="fa-solid fa-users"></i> Admin List</a>
                                                 </div>
                                             </div>

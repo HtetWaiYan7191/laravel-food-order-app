@@ -13,27 +13,27 @@
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
                             <div class="overview-wrap">
-                                <h2 class="title-1">Products List</h2>
+                                <h2 class="title-1">Admin List</h2>
 
                             </div>
                         </div>
-                        <div class="table-data__tool-right">
-                            <a href="{{ route('product#new')}}">
+                        {{-- <div class="table-data__tool-right">
+                            <a href="{{ route('category#create') }}">
                                 <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i>Add Product
+                                    <i class="zmdi zmdi-plus"></i>Add Category
                                 </button>
                             </a>
                             <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                                 CSV download
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
 
-                    @if (session('success'))
+                    @if (session('categorySuccess'))
                         {{-- BOOTSTRAP ALERT BOX  --}}
                         <div class="col-4 offset-8">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <i class="fa-solid fa-check"></i> {{ session('success') }}
+                                <i class="fa-solid fa-check"></i> {{ session('categorySuccess') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
@@ -41,11 +41,11 @@
                         {{-- BOOTSTRAP ALERT BOX END  --}}
                     @endif
 
-                    @if (session('productDelete'))
+                    @if (session('listDelete') && count($admins) >= 1)
                         {{-- BOOTSTRAP ALERT BOX  --}}
                         <div class="col-4 offset-8">
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                {{ session('productDelete') }}
+                                <i class="fa-solid fa-xmark"></i> {{ session('listDelete') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
@@ -56,18 +56,15 @@
                     {{-- SEARCH BOX START --}}
                     <div class="row">
                         <div class="col-3">
-                            @if (request('key'))
                             <h4 class="text-secondary">Search key: <span class="text-success">{{ request('key') }}</span>
                             </h4>
-                            @endif
-                            
                         </div>
                         <div class="col-3 offset-6">
-                            <form action="{{ route('product#list') }}" method="GET">
+                            <form action="{{ route('admin#list')}}" method="GET">
                                 @csrf
                                 <div class="d-flex">
                                     <input type="text" name="key" class="form-control" placeholder="Search"
-                                        value="{{ request('key')}}">
+                                        value="{{ request('key') }}">
                                     <button type="submit" class="btn btn-dark">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
@@ -80,109 +77,108 @@
                     {{-- TOTAL BOX START  --}}
                     <div class="row">
                         <div class="col-5">
-                            <h3 class=""><i class="fa-solid fa-database "></i> <span>Total - {{$pizzas->total()}}
-                                   </span>
+                            <h3 class=""><i class="fa-solid fa-database "></i> <span>{{count($admins)}}</span>
                             </h3>
                         </div>
                     </div>
                     {{-- TOTAL BOX END --}}
-
-                    {{-- UPDATE SUCCESS BOX START --}}
-                    @if (session('updateSuccess'))
-                        {{-- BOOTSTRAP ALERT BOX  --}}
-                        <div class="col-4 offset-8">
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <i class="fa-solid fa-check"></i> {{ session('updateSuccess') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
-                        </div>
-                        {{-- BOOTSTRAP ALERT BOX END  --}}
-                    @endif
-                    {{-- UPDATE SUCCESS BOX END --}}
-
                     <div class="table-responsive table-responsive-data2">
+                        @if (count($admins) != 0)
 
-                        @if (count($pizzas) != 0)
-                            {{-- LIST TABLE START  --}}
                             <table class="table table-data2">
                                 <thead>
                                     <tr>
                                         <th>IMAGE</th>
-                                        <th>NAME</th>
-                                        <th>Description</th>
-                                        <th>PRICE</th>
-                                        <th>CATEGORY</th>
-                                        <th>View Count</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>GENDER</th>
+                                        <th>PHONE</th>
+                                        <th>ADDRESS</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pizzas as $pizza)
+                                    @foreach ($admins as $admin)
                                         <tr class="tr-shadow my-2">
-                                            <td class="col-2 img-thumbnail shadow-sm"><img
-                                                    src="{{ asset('storage/'.$pizza->image ) }}" alt="{{ $pizza->name}}"></td>
                                             <td class="col-2">
-                                                <span class="">{{ $pizza->name }}</span>
+                                                @if ($admin->image == null)
+                                                    <img src="{{ asset('image/defaultUser.png') }}" alt="">
+                                                @else
+                                                    <img src="{{ asset('storage/' . $admin->image) }}"
+                                                        class="shadow-sm img-thumbnail" alt="">
+                                                @endif
                                             </td>
-                                            <td class="col-2 ">{{ $pizza->description }}</td>
-                                            <td class="col-2">{{ $pizza->price }}</td>
-                                            <td class="col-2">{{ $pizza->category->name }}</td>
-                                            <td class="col-2"><i class="fa-solid fa-eye"></i> {{ $pizza->view_count }}
-                                            </td>
+                                            <td>{{ $admin->name }}</td>
+                                            <td>{{ $admin->email }}</td>
+                                            <td>{{ $admin->gender }}</td>
+                                            <td>{{ $admin->phone }}</td>
+                                            <td>{{ $admin->address }}</td>
+
                                             <td>
                                                 <div class="table-data-feature">
-                                                    <a href="{{ route('product#show', $pizza->id)}}">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Show">
-                                                            <i class="zmdi zmdi-mail-send"></i>
-                                                        </button>
-                                                    </a>
-                                                    <a href="{{ route('product#edit', $pizza->id)}}">
+                                                    <button class="item" data-toggle="tooltip" data-placement="top"
+                                                        title="Send">
+                                                        <i class="zmdi zmdi-mail-send"></i>
+                                                    </button>
+                                                    <a href="#">
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
                                                     </a>
-                                                    <a href="{{ route('product#delete', $pizza->id)}}">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
+
+                                                    @if (Auth::user()->id == $admin->id)
+                                                    <a href="#">
+
                                                         </button>
                                                     </a>
-
+                                                @else
                                                     <a href="">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="More">
-                                                            <i class="zmdi zmdi-more"></i>
+                                                        <button class="item" data-toggle="tooltip"
+                                                            data-placement="top" title="Admin Change">
+                                                            <i class="fa-solid fa-user-shield"></i>
                                                         </button>
                                                     </a>
+                                                @endif
 
+                                                    @if (Auth::user()->id == $admin->id)
+                                                        <a href="#">
+
+                                                            </button>
+                                                        </a>
+                                                    @else
+                                                        <a href="">
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Delete">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </button>
+                                                        </a>
+                                                    @endif
+
+                                                    <button class="item" data-toggle="tooltip" data-placement="top"
+                                                        title="More">
+                                                        <i class="zmdi zmdi-more"></i>
+                                                    </button>
                                                 </div>
                                             </td>
 
                                         </tr>
                                     @endforeach
+
+
+
+
                                 </tbody>
                             </table>
-                            {{-- LIST TABLE END  --}}
-                        @else
-                            <h1 class=" text-secondary text-center">There is no data</h1>
+                            {{-- PAGINATOR UI START --}}
 
-                        @endif
+                            
 
-
-                        {{-- PAGINATOR UI START --}}
-
-                        <div class="mt-3">
-                            {{ $pizzas->links() }}
-                        </div> 
-
-                        {{-- PAGINATOR UI END  --}}
+                            {{-- PAGINATOR UI END  --}}
                     </div>
-
-
-
+                @else
+                    <h1 class=" text-secondary text-center">There is no data</h1>
+                    @endif
                     <!-- END DATA TABLE -->
                 </div>
             </div>

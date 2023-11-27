@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
     //
+    public function list() {
+        $admins = User::where('role', 'admin')->get();
+        return view('admin.account.list', compact('admins'));
+    }
+
     public function changePasswordPage() {
         return view('admin.account.changePassword');
     }
