@@ -122,12 +122,14 @@
                                                         title="Send">
                                                         <i class="zmdi zmdi-mail-send"></i>
                                                     </button>
-                                                    <a href="#">
+                                                    @if (Auth::user()->id == $admin->id)
+                                                    <a href="{{ route('admin#edit')}}">
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
                                                     </a>
+                                                    @endif
 
                                                     @if (Auth::user()->id == $admin->id)
                                                     <a href="#">
