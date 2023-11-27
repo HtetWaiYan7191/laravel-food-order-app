@@ -14,7 +14,12 @@ class AdminController extends Controller
 {
     //
     public function list() {
-        $admins = User::where('role', 'admin')->get();
+        $admins = User::when(request('key'), function($query, $key) {
+            $query->where('name', 'like', '%'. $key .'%');
+        })
+        ->orderBy('id', 'desc')
+        ->where('role', 'admin')
+        ->paginate(3);
         return view('admin.account.list', compact('admins'));
     }
 

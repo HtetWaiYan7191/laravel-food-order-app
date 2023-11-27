@@ -77,7 +77,7 @@
                     {{-- TOTAL BOX START  --}}
                     <div class="row">
                         <div class="col-5">
-                            <h3 class=""><i class="fa-solid fa-database "></i> <span>{{count($admins)}}</span>
+                            <h3 class=""><i class="fa-solid fa-database "></i> <span>{{$admins->total()}}</span>
                             </h3>
                         </div>
                     </div>
@@ -172,7 +172,9 @@
                             </table>
                             {{-- PAGINATOR UI START --}}
 
-                            
+                            <div class="mt-4">
+                                {{ $admins->links()}}
+                            </div>
 
                             {{-- PAGINATOR UI END  --}}
                     </div>
