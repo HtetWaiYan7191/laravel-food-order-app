@@ -56,8 +56,10 @@
                     {{-- SEARCH BOX START --}}
                     <div class="row">
                         <div class="col-3">
+                            @if (request('key'))
                             <h4 class="text-secondary">Search key: <span class="text-success">{{ request('key') }}</span>
                             </h4>
+                            @endif
                         </div>
                         <div class="col-3 offset-6">
                             <form action="{{ route('admin#list')}}" method="GET">
