@@ -42,6 +42,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('detail', [AdminController::class, 'detail'])->name('admin#detail');
             Route::get('edit', [AdminController::class, 'edit'])->name('admin#edit');
             Route::post('update/{id}', [AdminController::class, 'update'])->name('admin#update');
+            Route::get('delete/{id}', [AdminController::class, 'delete'])->name('admin#delete');
+            Route::get('changeRole/{id}', [AdminController::class, 'changeRole'])->name('admin#changeRole');
+            Route::post('updateRole/{id}', [AdminController::class, 'updateRole'])->name('admin#updateRole');
         });
     });
 

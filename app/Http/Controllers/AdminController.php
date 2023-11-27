@@ -52,6 +52,18 @@ class AdminController extends Controller
         return view('admin.account.edit');
     }
 
+    public function changeRole($id) {
+        $account = User::where('id', $id)->first();
+        return view('admin.account.changeRole', compact('account'));
+    }
+
+    public function updateRole(Request $request, $id) {
+        $name = User::where('id', $id)->value('name');
+        $data = $this->requestUserData($request);
+        User::where('id', $id)->update($data);
+        return redirect()->route('admin#list')->with(['success' => "Role updated successfully for ${name} "]);
+    }
+
     public function update(Request $request, $id) {
         $this->createValidation($request);
         $data = $this->getData($request);
@@ -73,7 +85,17 @@ class AdminController extends Controller
         return redirect()->route('admin#detail')->with(['success' => 'Account updated successfully']);
     }
 
+    public function delete($id) {
+        User::where('id', $id)->delete();
+        return redirect()->route('admin#list')->with(['success' => 'Admin Delete successfully']);
+    }
 
+
+    private function requestUserData($request){
+        return [
+            'role' => $request->role
+        ];
+    }
 
 
     private function passwordValidation($request) {

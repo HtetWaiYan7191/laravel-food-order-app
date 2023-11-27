@@ -29,11 +29,11 @@
                         </div> --}}
                     </div>
 
-                    @if (session('categorySuccess'))
+                    @if (session('success'))
                         {{-- BOOTSTRAP ALERT BOX  --}}
                         <div class="col-4 offset-8">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <i class="fa-solid fa-check"></i> {{ session('categorySuccess') }}
+                                <i class="fa-solid fa-check"></i> {{ session('success') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
@@ -137,7 +137,7 @@
                                                         </button>
                                                     </a>
                                                 @else
-                                                    <a href="">
+                                                    <a href="{{ route('admin#changeRole', $admin->id)}}">
                                                         <button class="item" data-toggle="tooltip"
                                                             data-placement="top" title="Admin Change">
                                                             <i class="fa-solid fa-user-shield"></i>
@@ -151,7 +151,7 @@
                                                             </button>
                                                         </a>
                                                     @else
-                                                        <a href="">
+                                                        <a href="{{ route('admin#delete', $admin->id)}}">
                                                             <button class="item" data-toggle="tooltip"
                                                                 data-placement="top" title="Delete">
                                                                 <i class="zmdi zmdi-delete"></i>
