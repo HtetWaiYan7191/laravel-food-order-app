@@ -52,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
     //user
     Route::prefix('user')->middleware('user_auth')->group(function () {
         Route::get('home', [UserController::class, 'home'])->name('user#home');
+        Route::get('changePassword', [UserController::class, 'changePassword'])->name('user#changePassword');
+        Route::post('updatePassword', [UserController::class, 'updatePassword'])->name('user#updatePassword');
     });
 });
 
