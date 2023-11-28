@@ -87,7 +87,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="{{route('user#homePage')}}" class="nav-item nav-link active">Home</a>
+                            <a href="{{route('user#home')}}" class="nav-item nav-link active">Home</a>
                             <a href="cart.html" class="nav-item nav-link">My Cart</a>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
@@ -99,8 +99,8 @@
                                         <i class="fa-solid fa-user "></i> {{Auth::user()->name}}
                                     </button>
                                     <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item my-2" href="{{route('user#viewPage')}}"><i class="fa-solid fa-user"></i> Account</a></li>
-                                      <li><a class="dropdown-item my-2" href="{{route('user#changePasswordPage')}}"><i class="fa-solid fa-lock"></i> Change Password</a></li>
+                                      <li><a class="dropdown-item my-2" href=""><i class="fa-solid fa-user"></i> Account</a></li>
+                                      <li><a class="dropdown-item my-2" href=""><i class="fa-solid fa-lock"></i> Change Password</a></li>
                                       <li> <span class="dropdown-item my-2" >
                                         <form action="{{route('logout')}}" method="post" class=" d-block m-auto">
                                             @csrf
