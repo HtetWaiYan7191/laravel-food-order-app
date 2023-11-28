@@ -20,6 +20,10 @@ class UserController extends Controller
         return view('user.main.home', compact('pizzas', 'categories'));
     }
 
+    public function view() {
+        return view('user.account.view');
+    }
+
     public function changePassword() {
         return view('user.account.changePassword');
     }
@@ -38,6 +42,17 @@ class UserController extends Controller
         }
         return back()->with(['fail' => 'The old password does not match ']);
     }
+    
+
+
+
+
+
+
+
+
+
+
 
     private function validatePassword($request) {
         Validator::make($request->all(), [
