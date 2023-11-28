@@ -100,7 +100,7 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                       <li><a class="dropdown-item my-2" href=""><i class="fa-solid fa-user"></i> Account</a></li>
-                                      <li><a class="dropdown-item my-2" href=""><i class="fa-solid fa-lock"></i> Change Password</a></li>
+                                      <li><a class="dropdown-item my-2" href="{{ route('user#changePassword')}}"><i class="fa-solid fa-lock"></i> Change Password</a></li>
                                       <li> <span class="dropdown-item my-2" >
                                         <form action="{{route('logout')}}" method="post" class=" d-block m-auto">
                                             @csrf

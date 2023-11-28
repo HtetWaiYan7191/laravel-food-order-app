@@ -148,13 +148,6 @@
 
                             <div class="ml-2">
                                 <div class="btn-group">
-                                    {{-- <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                            data-toggle="dropdown">Sorting</button> --}}
-                                    {{-- <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Ascending</a>
-                                            <a class="dropdown-item" href="#">Descending</a>
-                                            <a class="dropdown-item" href="#">Best Rating</a>
-                                        </div> --}}
                                     <select name="" id="sortingOption" class="form-control">
                                         <option value="">Choose Options</option>
                                         <option value="asc">Ascending</option>
