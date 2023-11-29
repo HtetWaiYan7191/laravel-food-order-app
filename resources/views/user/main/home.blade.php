@@ -225,11 +225,10 @@
 $(document).ready(function(){
     $('#sortingOption').change(function() {
             $eventOption = $('#sortingOption').val();
-
             if ($eventOption == 'asc') {
                 $.ajax({
                     type: 'get',
-                    url: 'http://127.0.0.1:8000/user/ajax/pizza/list',
+                    url: 'http://127.0.0.1:8000/user/ajax/pizzas',
                     data : {'status' : 'asc'},
                     dataType: 'json', //essential
                     success: function(response) {
@@ -269,7 +268,7 @@ $(document).ready(function(){
             } else if ($eventOption == 'desc') {
                 $.ajax({
                     type: 'get',
-                    url: 'http://127.0.0.1:8000/user/ajax/pizza/list',
+                    url: 'http://127.0.0.1:8000/user/ajax/pizzas',
                     data : {'status' : 'desc'},
                     dataType: 'json', //essential
                     success: function(response) {
