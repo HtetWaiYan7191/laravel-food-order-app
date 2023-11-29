@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
@@ -51,12 +52,21 @@ Route::middleware(['auth'])->group(function () {
 
     //user
     Route::prefix('user')->middleware('user_auth')->group(function () {
+        // users 
         Route::get('home', [UserController::class, 'home'])->name('user#home');
         Route::get('changePassword', [UserController::class, 'changePassword'])->name('user#changePassword');
         Route::post('updatePassword', [UserController::class, 'updatePassword'])->name('user#updatePassword');
         Route::get('view', [UserController::class, 'view'])->name('user#view');
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('user#edit');
         Route::post('update/{id}', [UserController::class,'update'])->name('user#update');
+
+
+
+
+        //ajax
+        Route::prefix('ajax')->group(function () {
+            Route::get('pizzas', [AjaxController::class, 'pizzaList'])->name('ajax#pizzaList');
+        });
     });
 });
 
