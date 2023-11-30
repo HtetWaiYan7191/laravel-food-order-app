@@ -27,6 +27,12 @@ class UserController extends Controller
         return view('user.main.home', compact('pizzas', 'categories'));
     }
 
+    public function show($id) {
+        $pizza = Product::find($id);
+        $pizzaList = Product::all();
+        return view('user.main.show', compact('pizza', 'pizzaList'));
+    }
+
     public function view() {
         return view('user.account.view');
     }

@@ -177,7 +177,7 @@
                                     <div class="product-action">
                                         <a class="btn btn-outline-dark btn-square" href=""><i
                                                 class="fa fa-shopping-cart"></i></a>
-                                        <a class="btn btn-outline-dark btn-square" href=""><i
+                                        <a class="btn btn-outline-dark btn-square" href="{{ route('user#show', $pizza->id)}}"><i
                                                 class="fa-solid fa-circle-info"></i></a>
 
                                     </div>
