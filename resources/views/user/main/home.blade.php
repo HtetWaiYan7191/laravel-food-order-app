@@ -15,7 +15,7 @@
                         <div class=" d-flex align-items-center justify-content-between mb-3 bg-dark text-white px-3 py-1">
                             <input type="checkbox" class="custom-control-input" checked id="price-all">
                             <label class="" for="price-all">Categories</label>
-                            <span class="badge border font-weight-normal">{{ count($categories) }}</span>
+                            <span class="badge border font-weight-normal">{{ $categories->count()    }}</span>
 
 
                         </div>
@@ -26,7 +26,7 @@
 
                         @foreach ($categories as $category)
                             <div class=" d-flex align-items-center justify-content-between mb-3">
-                                <a href="" class="text-dark"><label for="" class="">{{ $category->name }}</label></a>
+                                <a href="{{ route('user#filter', $category->id)}}" class="text-dark"><label for="" class="">{{ $category->name }}</label></a>
                             </div>
                         @endforeach
                     </form>
@@ -130,7 +130,7 @@
                                     <button type="button" class="btn bg-dark position-relative me-2 rounded">
                                         <i class="fa-solid fa-cart-shopping text-white"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                            carts
+                                            5
                                         </span>
                                       </button>
                                 </a>
@@ -139,7 +139,7 @@
                                     <button type="button" class="btn bg-dark position-relative">
                                         <i class="fa-sharp fa-solid fa-clock-rotate-left text-white"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                            carts
+                                           3
                                         </span>
                                       </button>
                                 </a>
@@ -193,7 +193,7 @@
                         </div>
                     @endforeach
                         @else
-                        <h1 class="text-center bg-warning fs-5 text-white p-4 col-6 offset-3 ">There is no Pizzas</h1>
+                        <h1 class="text-center bg-warning fs-5 text-white p-4 col-6 offset-3 ">There is no Pizzas in this category</h1>
                         @endif
 
                     </span>
@@ -211,17 +211,6 @@
 
 @section('scriptSource')
     <script>
-        // $(document).ready(function(){
-        //     $.ajax({
-        //         type : 'get',
-        //         url : 'http://127.0.0.1:8000/user/ajax/pizza/list',
-        //         dataType : 'json',//essential
-        //         success : function(response){
-        //             console.log(response)
-        //         }
-        //     })
-        // });
-
 $(document).ready(function(){
     $('#sortingOption').change(function() {
             $eventOption = $('#sortingOption').val();
