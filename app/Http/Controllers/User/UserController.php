@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Carbon\Carbon;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
@@ -18,7 +19,8 @@ class UserController extends Controller
     public function home() {
         $pizzas = Product::orderBy('created_at', 'desc')->get();
         $categories = Category::get();
-        return view('user.main.home', compact('pizzas', 'categories'));
+        $carts = Cart::get();
+        return view('user.main.home', compact('pizzas', 'categories', 'carts'));
     }
 
     public function filter($id) {
