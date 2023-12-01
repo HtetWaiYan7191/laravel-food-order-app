@@ -124,7 +124,7 @@
 @endsection
 
 @section("scriptSource")
-    {{-- <script>
+    <script>
         $(document).ready(function(){
             $('#addCartBtn').click(function(){
 
@@ -139,15 +139,15 @@
                     url :'http://127.0.0.1:8000/user/ajax/addToCart' ,
                     data:$source,
                     dataType:'json',
-                    success:function(response){
-
+                    success: function(response){
+                        console.log(response.status);
                         if(response.status == 'success'){
-                            window.location.href = 'http://127.0.0.1:8000/user/homePage';
+                            window.location.href = 'http://127.0.0.1:8000/user/home';
                         }
                     }
                 })
             })
 
         })
-    </script> --}}
+    </script>
     @endsection
