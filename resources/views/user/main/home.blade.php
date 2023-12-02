@@ -15,7 +15,7 @@
                         <div class=" d-flex align-items-center justify-content-between mb-3 bg-dark text-white px-3 py-1">
                             <input type="checkbox" class="custom-control-input" checked id="price-all">
                             <label class="" for="price-all">Categories</label>
-                            <span class="badge border font-weight-normal">{{ $categories->count()    }}</span>
+                            <span class="badge border font-weight-normal">{{ $categories->count()    }}</span>    
 
 
                         </div>
@@ -26,7 +26,7 @@
 
                         @foreach ($categories as $category)
                             <div class=" d-flex align-items-center justify-content-between mb-3">
-                                <a href="{{ route('user#filter', $category->id)}}" class="text-dark"><label for="" class="">{{ $category->name }}</label></a>
+                                <a href="{{ route('user#filter', $category->id)}}" class="text-dark "><label for="" class="text-capitalize">{{ $category->name }}</label></a>
                             </div>
                         @endforeach
                     </form>
@@ -149,9 +149,9 @@
                             <div class="ml-2">
                                 <div class="btn-group">
                                     <select name="" id="sortingOption" class="form-control">
-                                        <option value="">Choose Options</option>
-                                        <option value="asc">Ascending</option>
-                                        <option value="desc">Descending</option>
+                                        <option value="" >Choose Options</option>
+                                        <option value="asc" >Ascending</option>
+                                        <option value="desc" >Descending</option>
                                     </select>
                                 </div>
                                 <div class="btn-group ml-2">
