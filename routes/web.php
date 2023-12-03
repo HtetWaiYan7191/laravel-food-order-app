@@ -62,6 +62,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('user#edit');
         Route::post('update/{id}', [UserController::class,'update'])->name('user#update');
 
+        // carts
+        Route::get('carts', [UserController::class, 'carts'])->name('user#carts');
+
 
 
 

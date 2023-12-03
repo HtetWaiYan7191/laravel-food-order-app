@@ -23,6 +23,12 @@ class UserController extends Controller
         return view('user.main.home', compact('pizzas', 'categories', 'carts'));
     }
 
+    public function carts() {
+        $cartList = Cart::all();
+        $totalPrice = $this->getTotalPrice($cartList);
+        return view('user.cart.carts', compact('cartList', 'totalPrice'));
+    }
+
     public function filter($id) {
         $pizzas = Product::where('category_id', $id)->orderBy('created_at', 'desc')->get();
         $categories = Category::all();
@@ -89,7 +95,13 @@ class UserController extends Controller
 
 
 
-
+    private function getTotalPrice($cartList) {
+        $totalPrice = 0;
+        foreach($cartList as $cart) {
+            $totalPrice += $cart->product->price * $cart->quantity;
+        }
+        return $totalPrice;
+    }
 
    private function validateCreate($request) {
         Validator::make($request->all(), [
