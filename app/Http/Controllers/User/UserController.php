@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -20,7 +21,8 @@ class UserController extends Controller
         $pizzas = Product::orderBy('created_at', 'desc')->get();
         $categories = Category::get();
         $carts = Cart::get();
-        return view('user.main.home', compact('pizzas', 'categories', 'carts'));
+        $orders = Order::get();
+        return view('user.main.home', compact('pizzas', 'categories', 'carts', 'orders'));
     }
 
     public function carts() {
@@ -33,7 +35,8 @@ class UserController extends Controller
         $pizzas = Product::where('category_id', $id)->orderBy('created_at', 'desc')->get();
         $categories = Category::all();
         $carts = Cart::get();
-        return view('user.main.home', compact('pizzas', 'categories', 'carts'));
+        $orders = Order::get();
+        return view('user.main.home', compact('pizzas', 'categories', 'carts', 'orders'));
     }
 
     public function show($id) {
