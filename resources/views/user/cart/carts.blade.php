@@ -108,7 +108,9 @@
         $('#orderBtn').click(function() {
             $orderList = [];
             $random = Math.floor(Math.random() * 100000) + 1;
-
+            $order = {
+                'user_id' : 
+            }
 
             $('#dataTable tbody tr').each(function(index, row) {
 
@@ -123,14 +125,20 @@
 
             $.ajax({
                 type: 'get',
-                url: 'http://127.0.0.1:8000/user/ajax/order',
+                url: 'http://127.0.0.1:8000/user/ajax/orderList',
                 data: Object.assign({}, $orderList),
                 dataType: 'json',
                 success: function(response) {
                     if (response.status == 'true') {
-                        window.location.href = 'http://127.0.0.1:8000/user/homePage';
+                        window.location.href = 'http://127.0.0.1:8000/user/home';
                     }
                 }
+            })
+
+            $.ajax({
+                type: 'get',
+                url: 'http://127.0.0.1:8000/user/ajax/order',
+                data: 
             })
 
 

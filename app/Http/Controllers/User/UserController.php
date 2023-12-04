@@ -32,7 +32,8 @@ class UserController extends Controller
     public function filter($id) {
         $pizzas = Product::where('category_id', $id)->orderBy('created_at', 'desc')->get();
         $categories = Category::all();
-        return view('user.main.home', compact('pizzas', 'categories'));
+        $carts = Cart::get();
+        return view('user.main.home', compact('pizzas', 'categories', 'carts'));
     }
 
     public function show($id) {

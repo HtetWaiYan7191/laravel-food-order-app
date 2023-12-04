@@ -126,7 +126,7 @@
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div>
-                                <a href="" class="">
+                                <a href="{{ route('user#carts')}}" class="">
                                     <button type="button" class="btn bg-dark position-relative me-2 rounded">
                                         <i class="fa-solid fa-cart-shopping text-white"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -139,7 +139,7 @@
                                     <button type="button" class="btn bg-dark position-relative">
                                         <i class="fa-sharp fa-solid fa-clock-rotate-left text-white"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                           3
+                                           2    
                                         </span>
                                       </button>
                                 </a>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id')->constrained('orders');
             $table->integer('qty');
             $table->integer('total');
-            $table->string('orderCode');
+            $table->string('orderCode'); 
             $table->timestamps();
         });
     }
