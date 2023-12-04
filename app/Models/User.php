@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Rating;
+use App\Models\OrderList;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
@@ -45,6 +46,10 @@ class User extends Authenticatable
 
     public function rating() {
         return $this->hasMany(Rating::class);
+    }
+
+    public function orderLists() {
+        return $this->hasMany(OrderList::class);
     }
 
     /**

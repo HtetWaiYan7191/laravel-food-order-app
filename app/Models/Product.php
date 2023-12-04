@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Order;
 use App\Models\Rating;
 use App\Models\Category;
+use App\Models\OrderList;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -34,7 +35,11 @@ class Product extends Model
         return $this->hasMany(Cart::class);
     }
 
-    public function rating() {
+    public function ratings() {
         return $this->hasMany(Rating::class);
+    }
+
+    public function orderLists() {
+        return $this->hasMany(OrderList::class);
     }
 }
