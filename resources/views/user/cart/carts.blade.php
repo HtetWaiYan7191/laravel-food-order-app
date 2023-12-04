@@ -158,15 +158,12 @@
             $parentNode = $(this).parents("tr");
             $productId = $parentNode.find('#productId').val();
             $orderId = $parentNode.find('#orderId').val();
-            console.log($productId,$orderId);
 
             $.ajax({
                 type: 'get',
                 url: 'http://127.0.0.1:8000/user/ajax/clear/current/product',
                 data: {'productId' : $productId, ' orderId' : $orderId},
                 dataType: 'json',
-
-
             })
 
             $parentNode.remove();
@@ -178,8 +175,6 @@
 
             $('#subTotalPrice').html(`${$totalPrice} Kyats`);
             $('#finalTotal').html(`${$totalPrice + 3000} Kyats`);
-
-
         })
     </script>
 @endsection
