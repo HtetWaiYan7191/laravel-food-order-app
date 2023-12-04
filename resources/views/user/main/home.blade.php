@@ -139,7 +139,7 @@
                                     <button type="button" class="btn bg-dark position-relative">
                                         <i class="fa-sharp fa-solid fa-clock-rotate-left text-white"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                           2    
+                                           {{ $orders->count() }}   
                                         </span>
                                       </button>
                                 </a>

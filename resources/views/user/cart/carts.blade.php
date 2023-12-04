@@ -32,6 +32,7 @@
                         </tr>
                     </thead>
                     <tbody class="align-middle">
+                        <input type="hidden" value="{{ Auth::User()->id}} " id="userId">
                         @foreach ($cartList as $c)
                             <tr>
                                 <td class="align-middle"><img src="{{ asset('storage/' . $c->product->image) }}"
@@ -109,8 +110,9 @@
             $orderList = [];
             $random = Math.floor(Math.random() * 100000) + 1;
             $order = {
-                'user_id' : 
-            }
+                'user_id' : $('#userId').val(),
+                'total_price': Number($('#finalTotal').text()),
+            };
 
             $('#dataTable tbody tr').each(function(index, row) {
 
@@ -123,22 +125,33 @@
                 });
             });
 
-            $.ajax({
-                type: 'get',
-                url: 'http://127.0.0.1:8000/user/ajax/orderList',
-                data: Object.assign({}, $orderList),
-                dataType: 'json',
-                success: function(response) {
-                    if (response.status == 'true') {
-                        window.location.href = 'http://127.0.0.1:8000/user/home';
-                    }
-                }
-            })
+            $payLoad = {
+                'order': $order,
+                'orderList': $orderList
+            };
+
+            // $.ajax({
+            //     type: 'get',
+            //     url: 'http://127.0.0.1:8000/user/ajax/orderList',
+            //     data: Object.assign({}, $orderList),
+            //     dataType: 'json',
+            //     success: function(response) {
+            //         if (response.status == 'true') {
+            //             window.location.href = 'http://127.0.0.1:8000/user/home';
+            //         }
+            //     }
+            // })
 
             $.ajax({
                 type: 'get',
                 url: 'http://127.0.0.1:8000/user/ajax/order',
-                data: 
+                data: $payLoad,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status == 'success') {
+                        window.location.href = 'http://127.0.0.1:8000/user/home';
+                    }
+                }
             })
 
 
