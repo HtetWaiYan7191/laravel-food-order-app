@@ -64,6 +64,11 @@ class AjaxController extends Controller
                     ->delete();
     }
 
+    public function orderStatus(Request $request) {
+        $orderId = $request->orderId;
+        Order::where('id', $orderId)->update(['status' => $request->orderStatus]);
+    }
+
 
 
 

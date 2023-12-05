@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\UserController;
@@ -24,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('category#edit');
             Route::post('update', [CategoryController::class, 'update'])->name('category#update');
         });
+
 
         //products
         Route::prefix('product')->group(function() {
@@ -47,6 +49,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('delete/{id}', [AdminController::class, 'delete'])->name('admin#delete');
             Route::get('changeRole/{id}', [AdminController::class, 'changeRole'])->name('admin#changeRole');
             Route::post('updateRole/{id}', [AdminController::class, 'updateRole'])->name('admin#updateRole');
+        });
+
+        // orders 
+        Route::prefix('order')->group(function () {
+            Route::get('list', [OrderController::class, 'list'])->name('order#list');
+            Route::get('status', [AjaxController::class, 'orderStatus'])->name('ajax#orderStatus');
+
         });
     });
 
