@@ -64,6 +64,8 @@ Route::middleware(['auth'])->group(function () {
 
         // carts
         Route::get('carts', [UserController::class, 'carts'])->name('user#carts');
+        // orders
+        Route::get('history', [UserController::class, 'history'])->name('user#history');
 
 
 
@@ -73,6 +75,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('pizzas', [AjaxController::class, 'pizzaList'])->name('ajax#pizzaList');
             Route::get('addToCart', [AjaxController::class, 'addToCart'])->name('ajax#addToCart');
             Route::get('order', [AjaxController::class, 'order'])->name('ajax#order');
+            Route::get('clear/cart', [AjaxController::class, 'clearCart'])->name('ajax#clearCart');
         });
     });
 });

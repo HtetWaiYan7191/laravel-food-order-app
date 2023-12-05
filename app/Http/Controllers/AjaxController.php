@@ -52,8 +52,23 @@ class AjaxController extends Controller
                 'status' => 'success'
             ];
             return response()->json($response, 200);
-
     }
+
+    public function clearCart() {
+        Cart::where('user_id', Auth::user()->id)->delete();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     private function getData($request) {
         return [
