@@ -76,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('addToCart', [AjaxController::class, 'addToCart'])->name('ajax#addToCart');
             Route::get('order', [AjaxController::class, 'order'])->name('ajax#order');
             Route::get('clear/cart', [AjaxController::class, 'clearCart'])->name('ajax#clearCart');
+            Route::get('remove', [AjaxController::class, 'remove'])->name('ajax#remove');
         });
     });
 });

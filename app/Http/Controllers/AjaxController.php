@@ -58,6 +58,12 @@ class AjaxController extends Controller
         Cart::where('user_id', Auth::user()->id)->delete();
     }
 
+    public function remove(Request $request) {
+        Cart::where('product_id', $request->productId)
+                    ->where('user_id', Auth::user()->id)
+                    ->delete();
+    }
+
 
 
 
