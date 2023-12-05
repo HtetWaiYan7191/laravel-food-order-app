@@ -18,6 +18,7 @@
 
     <!-- Cart Start -->
     <div class="container-fluid">
+        @if (count($cartList) != 0)
         <div class="row px-xl-5">
             <div class="col-lg-8 table-responsive mb-5">
                 <table class="table table-light table-borderless table-hover text-center mb-0" id="dataTable">
@@ -99,6 +100,12 @@
                 </div>
             </div>
         </div>
+        @else
+        <div style="height: 50vh" class="d-flex justify-content-center align-items-center   ">
+            <h2 class="text-center" >Thre are no carts right now </h2>
+        </div>
+        @endif
+        
     </div>
     <!-- Cart End -->
 @endsection
