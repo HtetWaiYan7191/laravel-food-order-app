@@ -75,7 +75,7 @@
                     {{-- TOTAL BOX START  --}}
                     <div class="row">
                         <div class="col-5">
-                            <h3 class=""><i class="fa-solid fa-database "></i> <span>Total - {{$orderLists->total()}}
+                            <h3 class=""><i class="fa-solid fa-database "></i> <span>Total - {{$orders->total()}}
                                    </span>
                             </h3>
                         </div>
@@ -98,7 +98,7 @@
 
                     <div class="table-responsive table-responsive-data2">
 
-                        @if (count($orderLists) != 0)
+                        @if (count($orders) != 0)
                             {{-- LIST TABLE START  --}}
                             <table class="table table-data2">
                                 <thead>
@@ -107,16 +107,15 @@
                                         <th>User Name</th>
                                         <th>Order Date</th>
                                         <th>Total</th>
-                                        <th>Order Code</th>
                                         <th>Status</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($orderLists as $order)
+                                    @foreach ($orders as $order)
                                         <tr class="tr-shadow my-2">
                                             <td class="col-2">
-                                                <input type="hidden" value="{{ $order->order_id}}" class="orderId">
+                                                <input type="hidden" value="{{ $order->id}}" class="orderId">
                                                 <span class="">{{ $order->user->id }}</span>
                                             </td>
                                             <td class="col-2">
@@ -124,11 +123,10 @@
                                             </td>
                                             <td class="col-2 ">{{ $order->created_at->format('m/d/Y') }}</td>
                                             <td class="col-2">{{ $order->total }} Kyats</td>
-                                            <td class="col-2">{{ $order->orderCode }}</td>
                                             <td class=" col-2 ">
                                                 <select class="form-control orderStatus" name="orderStatus">
-                                                    <option value="0" class="form-control" {{ $order->order->status == 0 ? 'selected' : '' }}>pending</option>
-                                                    <option value="1" class="form-control" {{ $order->order->status == 1 ? 'selected' : '' }}>approve</option>
+                                                    <option value="0" class="form-control" {{ $order->status == 0 ? 'selected' : '' }}>pending</option>
+                                                    <option value="1" class="form-control" {{ $order->status == 1 ? 'selected' : '' }}>approve</option>
                                                 </select>
                                             </td>
                                             {{-- @if ($order->order->status == 0)
@@ -153,7 +151,7 @@
                         {{-- PAGINATOR UI START --}}
 
                         <div class="mt-3">
-                            {{ $orderLists->links() }}
+                            {{ $orders->links() }}
                         </div> 
 
                         {{-- PAGINATOR UI END  --}}
