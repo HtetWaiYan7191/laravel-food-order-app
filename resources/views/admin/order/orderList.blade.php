@@ -13,7 +13,7 @@
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
                             <div class="overview-wrap">
-                                <h2 class="title-1">Order Lists</h2>
+                                <h2 class="title-1">Orders</h2>
 
                             </div>
                         </div>
@@ -107,6 +107,7 @@
                                         <th>User Name</th>
                                         <th>Order Date</th>
                                         <th>Total</th>
+                                        <th>Lists</th>
                                         <th>Status</th>
 
                                     </tr>
@@ -122,22 +123,26 @@
                                                 <span class="">{{ $order->user->name }}</span>
                                             </td>
                                             <td class="col-2 ">{{ $order->created_at->format('m/d/Y') }}</td>
-                                            <td class="col-2">{{ $order->total }} Kyats</td>
+                                            <td class="col-2">{{ $order->total_price }} Kyats</td>
+                                            <td class="col-2">
+                                                <a href="{{ route('orderList', $order->id)}}">
+                                                    <button type="button" class="btn btn-dark position-relative">
+                                                        Lists
+                                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                          {{count($order->orderLists)}}
+                                                          <span class="visually-hidden">unread messages</span>
+                                                        </span>
+                                                      </button>                                                </a>
+                                            </td>
+
                                             <td class=" col-2 ">
                                                 <select class="form-control orderStatus" name="orderStatus">
                                                     <option value="0" class="form-control" {{ $order->status == 0 ? 'selected' : '' }}>pending</option>
                                                     <option value="1" class="form-control" {{ $order->status == 1 ? 'selected' : '' }}>approve</option>
                                                 </select>
                                             </td>
-                                            {{-- @if ($order->order->status == 0)
-                                            <td class="col-2"> <i class="btn btn-warning"> pending  </i>
-
-                                            @else
-                                            <td class="col-2"> <i class="btn btn-success"> success </i></td>
-
-                                            @endif --}}
-
                                         </tr>
+                                        
                                     @endforeach
                                 </tbody>
                             </table>

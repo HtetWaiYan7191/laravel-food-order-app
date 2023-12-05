@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderList;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -15,5 +16,10 @@ class OrderController extends Controller
         ->orderBy('created_at', 'desc')
         ->paginate(4);
         return view('admin.order.orderList', compact('orders'));
+    }
+
+    public function orderList($id) {
+        $orderList = OrderList::where('order_id', $id)->get();
+        return view('orderList.orderList', compact('orderList'));
     }
 }

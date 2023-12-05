@@ -11,7 +11,9 @@
                             <th>Date</th>
                             <th>Order ID</th>
                             <th>Total Price</th>
+                            <th>Lists</th>
                             <th>Status</th>
+
                         </tr>
                     </thead>
                     <tbody class="align-middle">
@@ -21,6 +23,18 @@
                                 <td class="align-middle">{{ $order->created_at->format('F-j-Y') }}</td>
                                 <td class="align-middle">{{ $order->id }}</td>
                                 <td class="align-middle">{{ $order->total_price }}</td>
+                                <td class="align-middle">
+                                    <a href="{{ route('orderList', $order->id)}}">
+                                        <button type="button" class="btn btn-dark position-relative">
+                                            Lists
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                              {{count($order->orderLists)}}
+                                              <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                          </button>
+                                    </a>
+                                </td>
+
                                 <td class="align-middle">
                                     @if ($order->status == 0)
                                         <span class="text-warning"><i class="fa-solid fa-hourglass-start me-2"></i> Pending...</span>

@@ -88,6 +88,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('remove', [AjaxController::class, 'remove'])->name('ajax#remove');
         });
     });
+
+    Route::get('orderList/{id}', [OrderController::class, 'orderList'])->name('orderList');
 });
 
 // login, register
