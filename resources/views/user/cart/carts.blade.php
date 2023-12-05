@@ -168,7 +168,6 @@
                 type: 'get',
                 url: 'http://127.0.0.1:8000/user/ajax/clear/cart',
                 dataType: 'json',
-
             })
         })
 
@@ -182,8 +181,8 @@
 
             $.ajax({
                 type: 'get',
-                url: 'http://127.0.0.1:8000/user/ajax/clear/current/product',
-                data: {'productId' : $productId, ' orderId' : $orderId},
+                url: 'http://127.0.0.1:8000/user/ajax/remove',
+                data: {'productId': $productId, ' orderId': $orderId},
                 dataType: 'json',
             })
 

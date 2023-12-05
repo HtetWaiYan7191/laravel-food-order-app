@@ -31,6 +31,11 @@ class UserController extends Controller
         return view('user.cart.carts', compact('cartList', 'totalPrice'));
     }
 
+    public function history() {
+        $orders = Order::orderBy('id', 'desc')->paginate(4);
+        return view('user.main.history', compact('orders'));
+    }
+
     public function filter($id) {
         $pizzas = Product::where('category_id', $id)->orderBy('created_at', 'desc')->get();
         $categories = Category::all();

@@ -74,7 +74,7 @@
                         </li>
 
                         <li>
-                            <a href="">
+                            <a href=" {{route('order#list')}}">
                                 <i class="fa-solid fa-list"></i>Orders</a>
                         </li>
                         {{-- <li>
