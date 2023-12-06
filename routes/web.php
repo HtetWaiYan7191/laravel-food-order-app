@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('order')->group(function () {
             Route::get('list', [OrderController::class, 'list'])->name('order#list');
             Route::get('status', [AjaxController::class, 'orderStatus'])->name('ajax#orderStatus');
+            Route::get('filter', [AjaxController::class, 'filterOrders'])->name('ajax#filterOrders');
 
         });
     });

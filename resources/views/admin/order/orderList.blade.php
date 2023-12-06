@@ -82,6 +82,16 @@
                     </div>
                     {{-- TOTAL BOX END --}}
 
+                   <div class="row">
+                    <div class="col-2 my-4">
+                        <select name="filterStatus" id="filterStatus" class="form-control">
+                            <option value={{ 0}}>Pending</option>
+                            <option value={{1}}>Approve</option>
+                            <option value={{ 2 }}>Reject</option>
+                        </select>
+                    </div>
+                   </div>
+
                     {{-- UPDATE SUCCESS BOX START --}}
                     @if (session('updateSuccess'))
                         {{-- BOOTSTRAP ALERT BOX  --}}
@@ -112,38 +122,36 @@
 
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="tableBody">
                                     @foreach ($orders as $order)
-                                        <tr class="tr-shadow my-2">
-                                            <td class="col-2">
-                                                <input type="hidden" value="{{ $order->id}}" class="orderId">
-                                                <span class="">{{ $order->user->id }}</span>
-                                            </td>
-                                            <td class="col-2">
-                                                <span class="">{{ $order->user->name }}</span>
-                                            </td>
-                                            <td class="col-2 ">{{ $order->created_at->format('m/d/Y') }}</td>
-                                            <td class="col-2">{{ $order->total_price }} Kyats</td>
-                                            <td class="col-2">
-                                                <a href="{{ route('orderList', $order->id)}}">
-                                                    <button type="button" class="btn btn-dark position-relative">
-                                                        Lists
-                                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                                          {{count($order->orderLists)}}
-                                                          <span class="visually-hidden">unread messages</span>
-                                                        </span>
-                                                      </button>                                                </a>
-                                            </td>
-
-                                            <td class=" col-2 ">
-                                                <select class="form-control orderStatus" name="orderStatus">
-                                                    <option value="0" class="form-control" {{ $order->status == 0 ? 'selected' : '' }}>pending</option>
-                                                    <option value="1" class="form-control" {{ $order->status == 1 ? 'selected' : '' }}>approve</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        
-                                    @endforeach
+                                    <tr class="tr-shadow my-2">
+                                        <td class="col-2">
+                                            <input type="hidden" value="{{ $order->id}}" class="orderId">
+                                            <span class="">{{ $order->user->id }}</span>
+                                        </td>
+                                        <td class="col-2">
+                                            <span class="">{{ $order->user->name }}</span>
+                                        </td>
+                                        <td class="col-2 ">{{ $order->created_at->format('m/d/Y') }}</td>
+                                        <td class="col-2">{{ $order->total_price }} Kyats</td>
+                                        <td class="col-2">
+                                            <a href="{{ route('orderList', $order->id)}}">
+                                                <button type="button" class="btn btn-dark position-relative">
+                                                    Lists
+                                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                      {{count($order->orderLists)}}
+                                                      <span class="visually-hidden">unread messages</span>
+                                                    </span>
+                                                  </button>                                                </a>
+                                        </td>
+                                    
+                                        <td class=" col-2 ">
+                                            <select class="form-control orderStatus" name="orderStatus">
+                                                <option value="0" class="form-control" {{ $order->status == 0 ? 'selected' : '' }}>pending</option>
+                                                <option value="1" class="form-control" {{ $order->status == 1 ? 'selected' : '' }}>approve</option>
+                                            </select>
+                                        </td>
+                                    </tr>                                    @endforeach
                                 </tbody>
                             </table>
                             {{-- LIST TABLE END  --}}
@@ -190,6 +198,63 @@
             }
         });
     });
+
+
 });
+
+$('#filterStatus').change(function() {
+        $status = $('#filterStatus').val();
+        console.log($status);
+        $.ajax({
+            type:'get',
+            url: 'http://127.0.0.1:8000/order/filter',
+            data: { status: $status},
+            dataType: 'json',
+            success: function(response) {
+    let $list = '';
+
+    if (response.length > 0) {
+        for (let i = 0; i < response.length; i++) {
+            $list += `
+                <tr class="tr-shadow my-2">
+                    <td class="col-2">
+                        <input type="hidden" value="${response[i].id}" class="orderId">
+                        <span class="">${response[i].user_id}</span>
+                    </td>
+                    <td class="col-2">
+                        <span class="">${response[i].name}</span>
+                    </td>
+                    <td class="col-2">${response[i].created_at}</td>
+                    <td class="col-2">${response[i].total_price} Kyats</td>
+                    <td class="col-2">
+                        <a href="{{ route('orderList', $order->id)}}">
+                            <button type="button" class="btn btn-dark position-relative">
+                                Lists
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    ${response[i].order_lists_count}
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            </button>
+                        </a>
+                    </td>
+                    <td class="col-2">
+                        <select class="form-control orderStatus" name="orderStatus">
+                            <option value="0" class="form-control" ${response[i].status == 0 ? 'selected' : ''}>pending</option>
+                            <option value="1" class="form-control" ${response[i].status == 1 ? 'selected' : ''}>approve</option>
+                        </select>
+                    </td>
+                </tr>
+            `;
+        }
+
+        $('#tableBody').html($list);
+    } else {
+        $list += `<h1 class=" text-center ">No order</h1>`;
+        $('#tableBody').html($list);
+    }
+}
+
+        })
+    })
     </script>
 @endsection

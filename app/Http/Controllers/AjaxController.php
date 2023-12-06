@@ -67,6 +67,23 @@ class AjaxController extends Controller
             return response()->json($response, 200);
     }
 
+    public function filterOrders(Request $request) {
+        if($request->status != 2) {
+            $orders = Order::where('status', $request->status)
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->join('order_lists', 'orders.id', '=', 'order_lists.order_id')
+            ->select('orders.*', 'users.name')
+            ->withCount('orderLists')
+            ->distinct()
+            ->get();
+            logger($orders);
+            return response()->json($orders, 200);
+        } else {
+
+            return response()->json([], 200);
+        }
+    }
+
     public function clearCart() {
         Cart::where('user_id', Auth::user()->id)->delete();
     }
