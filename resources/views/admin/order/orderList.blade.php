@@ -215,6 +215,13 @@ $('#filterStatus').change(function() {
 
     if (response.length > 0) {
         for (let i = 0; i < response.length; i++) {
+
+            let formattedDate = new Date(response[i].created_at).toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+            });
+
             $list += `
                 <tr class="tr-shadow my-2">
                     <td class="col-2">
@@ -224,7 +231,7 @@ $('#filterStatus').change(function() {
                     <td class="col-2">
                         <span class="">${response[i].name}</span>
                     </td>
-                    <td class="col-2">${response[i].created_at}</td>
+                    <td class="col-2">${formattedDate}</td>
                     <td class="col-2">${response[i].total_price} Kyats</td>
                     <td class="col-2">
                         <a href="{{ route('orderList', $order->id)}}">
