@@ -45,6 +45,7 @@ class UserController extends Controller
     }
 
     public function show($id) {
+        Product::find($id)->increment('view_count');
         $pizza = Product::find($id);
         $pizzaList = Product::all();
         return view('user.main.show', compact('pizza', 'pizzaList'));
