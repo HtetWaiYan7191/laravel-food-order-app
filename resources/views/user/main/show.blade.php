@@ -23,13 +23,6 @@
                 <div class="h-100 bg-light p-30">
                     <h3>{{ $pizza->name }}</h3>
                     <div class="d-flex mb-3">
-                        {{-- <div class="text-primary mr-2">
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star-half-alt"></small>
-                            <small class="far fa-star"></small>
-                        </div> --}}
                         <small class="pt-1 fs-4">{{ $pizza->view_count }} <i class="fa-solid fa-eye fs-4"></i></small>
                     </div>
                     <h3 class="font-weight-semi-bold mb-4">{{ $pizza->price }} Kyats</h3>
@@ -140,7 +133,6 @@
                     data:$source,
                     dataType:'json',
                     success: function(response){
-                        console.log(response.status);
                         if(response.status == 'success'){
                             window.location.href = 'http://127.0.0.1:8000/user/home';
                         }

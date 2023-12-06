@@ -21,12 +21,25 @@ class AjaxController extends Controller
         return response()->json($pizzas, 200);
     }
 
+    public function autoAddToCart(Request $request) {
+        $userId = Auth::user()->id; 
+        $count = 1 ; 
+        $productId = intval($request->pizzaId);
+        $data = [ 'user_id' => $userId, 'product_id' => $productId, 'quantity' => $count ];
+        Cart::create($data);
+        $response = [
+            'message' => 'Item added to the cart successfully',
+            'status' => 'success',
+        ];
+        return response()->json($response, 200);
+    }
+
     public function addToCart(Request $request) {
         $data = $this->getData($request);
         Cart::create($data);
         $response = [
-            'message' => 'Item Added to the cart successfully ',
-            'status' => 'success'
+            'message' => 'Item Added to the cart successfully !!',
+            'status' => 'success',
         ];
         return response()->json($response, 200);
     }

@@ -83,6 +83,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('ajax')->group(function () {
             Route::get('pizzas', [AjaxController::class, 'pizzaList'])->name('ajax#pizzaList');
             Route::get('addToCart', [AjaxController::class, 'addToCart'])->name('ajax#addToCart');
+            Route::get('autoAddToCart', [AjaxController::class, 'autoAddToCart'])->name('ajax#autoAddToCart');
             Route::get('order', [AjaxController::class, 'order'])->name('ajax#order');
             Route::get('clear/cart', [AjaxController::class, 'clearCart'])->name('ajax#clearCart');
             Route::get('remove', [AjaxController::class, 'remove'])->name('ajax#remove');
