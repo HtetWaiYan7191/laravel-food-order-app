@@ -61,7 +61,7 @@
                             <form action="{{ route('order#list') }}" method="GET">
                                 @csrf
                                 <div class="d-flex">
-                                    <input type="text" name="key" class="form-control" placeholder="Search"
+                                    <input type="text" name="key" class="form-control" placeholder="Search By UserName"
                                         value="{{ request('key')}}">
                                     <button type="submit" class="btn btn-dark">
                                         <i class="fa-solid fa-magnifying-glass"></i>

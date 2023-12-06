@@ -11,7 +11,9 @@ class OrderController extends Controller
     //
     public function list() {
         $orders = Order::when(request('key'), function($query) {
-                        $query->where('orderCode', 'like', '%'. request('key').'%');
+            $query->whereHas('user', function($userQuery) {
+                $userQuery->where('name', 'like', '%' . request('key') . '%');
+            });
         })
         ->orderBy('created_at', 'desc')
         ->paginate(4);
