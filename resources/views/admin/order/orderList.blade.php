@@ -106,7 +106,7 @@
                     @endif
                     {{-- UPDATE SUCCESS BOX END --}}
 
-                    <div class="table-responsive table-responsive-data2">
+                    <div class="table-responsive table-responsive-data2" id="order-table">
 
                         @if (count($orders) != 0)
                             {{-- LIST TABLE START  --}}
@@ -257,7 +257,7 @@ $('#filterStatus').change(function() {
         $('#tableBody').html($list);
     } else {
         $list += `<h1 class=" text-center ">No order</h1>`;
-        $('#tableBody').html($list);
+        $('#order-table').html($list);
     }
 }
 

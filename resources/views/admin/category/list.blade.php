@@ -101,6 +101,7 @@
                                 <th>ID</th>
                                 <th>CATEGORY NAME</th>
                                 <th>CREATED DATE</th>
+                                <th class="text-end">Actions</th>
 
                             </tr>
                         </thead>

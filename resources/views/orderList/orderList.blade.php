@@ -21,11 +21,11 @@
                             <tr>
                                 <td class="align-middle">{{ $order->user->name }}</td>
                                 <td class="align-middle">{{ $order->order->id }}</td>
-                                <td class="align-middle img-thumbnail">
+                                <td class="align-middle ">
                                     <img src="{{ asset('storage/'.$order->product->image ) }}" style="width: 50px" alt="{{ $order->product->name}}">
                                 </td>
                                 <td class="align-middle">{{ $order->qty }}</td>
-                                <td class="align-middle">{{ $order->total }}</td>
+                                <td class="align-middle">{{ $order->total }} MMK</td>
                                 <td class="align-middle">{{ $order->created_at->format('F-j-Y')}}</td>
                             </tr>
                         @endforeach
