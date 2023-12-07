@@ -205,7 +205,6 @@
 
 $('#filterStatus').change(function() {
         $status = $('#filterStatus').val();
-        console.log($status);
         $.ajax({
             type:'get',
             url: 'http://127.0.0.1:8000/order/filter',

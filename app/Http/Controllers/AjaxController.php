@@ -73,6 +73,7 @@ class AjaxController extends Controller
             ->join('order_lists', 'orders.id', '=', 'order_lists.order_id')
             ->select('orders.*', 'users.name')
             ->withCount('orderLists')
+            ->orderBy('created_at', 'desc')
             ->distinct()
             ->get();
 
@@ -84,6 +85,7 @@ class AjaxController extends Controller
             ->join('order_lists', 'orders.id', '=', 'order_lists.order_id')
             ->select('orders.*', 'users.name')
             ->withCount('orderLists')
+            ->orderBy('created_at', 'desc')
             ->distinct()
             ->get();
             return response()->json($orders, 200);
