@@ -76,7 +76,6 @@ class AjaxController extends Controller
             ->withCount('orderLists')
             ->distinct()
             ->get();
-            logger($orders);
             return response()->json($orders, 200);
         } else {
 

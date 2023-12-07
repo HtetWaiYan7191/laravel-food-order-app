@@ -211,6 +211,7 @@ $('#filterStatus').change(function() {
             data: { status: $status},
             dataType: 'json',
             success: function(response) {
+                console.log(response);
     let $list = '';
 
     if (response.length > 0) {
@@ -256,8 +257,8 @@ $('#filterStatus').change(function() {
 
         $('#tableBody').html($list);
     } else {
-        $list += `<h1 class=" text-center ">No order</h1>`;
-        $('#order-table').html($list);
+        $list += `<h1 class=" text-center " style:'background: none;'>No order</h1>`;
+        $('#tableBody').html($list);
     }
 }
 
