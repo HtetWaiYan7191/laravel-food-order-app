@@ -68,7 +68,17 @@ class AjaxController extends Controller
     }
 
     public function filterOrders(Request $request) {
-        if($request->status != 2) {
+        if($request->status == 'all' ) {
+            $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
+            ->join('order_lists', 'orders.id', '=', 'order_lists.order_id')
+            ->select('orders.*', 'users.name')
+            ->withCount('orderLists')
+            ->distinct()
+            ->get();
+
+            return response()->json($orders, 200);
+        }
+        else if($request->status != 2) {
             $orders = Order::where('status', $request->status)
             ->join('users', 'orders.user_id', '=', 'users.id')
             ->join('order_lists', 'orders.id', '=', 'order_lists.order_id')

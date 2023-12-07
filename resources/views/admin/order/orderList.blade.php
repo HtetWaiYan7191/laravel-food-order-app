@@ -85,6 +85,7 @@
                    <div class="row">
                     <div class="col-2 my-4">
                         <select name="filterStatus" id="filterStatus" class="form-control">
+                            <option value="all">All</option>
                             <option value={{ 0}}>Pending</option>
                             <option value={{1}}>Approve</option>
                             <option value={{ 2 }}>Reject</option>
@@ -257,7 +258,7 @@ $('#filterStatus').change(function() {
 
         $('#tableBody').html($list);
     } else {
-        $list += `<h1 class=" text-center " style:'background: none;'>No order</h1>`;
+        $list += `<div></div>`;
         $('#tableBody').html($list);
     }
 }
