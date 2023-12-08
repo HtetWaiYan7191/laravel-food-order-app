@@ -1,66 +1,188 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<a name="readme-top"></a>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<div align="center">
 
-## About Laravel
+  <h1><b>Food Order App</b></h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+</div>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<!-- TABLE OF CONTENTS -->
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📗 Table of Contents
 
-## Learning Laravel
+- [📖 Food Order app ](#-food-order-app-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+    - [Authentication](#authentication)
+    - [User side](#user-side)
+    - [Admin Side](#admin-side)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+  - [👥 Author ](#-author-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<!-- PROJECT DESCRIPTION -->
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# 📖 Food Order app <a name="about-project"></a>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Food Order App** It's a web app built using PHP, Laravel, and jQuery. It took over three weeks to complete this project, during which I acquired a wealth of knowledge related to PHP. I implemented both user and admin sides, ensuring proper authentication and authorization. Though the experience of using jQuery was initially unfamiliar, it provided an opportunity to explore new technologies. I take pride in completing this project independently and am excited about the skills I've gained throughout the process.
 
-## Laravel Sponsors
+## 🛠 Built With <a name="built-with"></a>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Tech Stack <a name="tech-stack"></a>
 
-### Premium Partners
+<details>
+  <summary>Server</summary>
+    <li><a href="https://www.php.net/docs.php">PHP</a></li>
+    <li><a href="https://laravel.com/docs/10.x/installation">Laravel</a></li>
+    <li><a href="https://api.jquery.com/">jQuery</a></li>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+</details>
+<details>
+  <summary>Database</summary>
+    <li><a href="https://www.postgresql.org/">mySQL</a></li>
+</details>
 
-## Contributing
+<!-- Features -->
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Key Features <a name="key-features"></a>
 
-## Code of Conduct
+### Authentication 
+- **Implement authentication using jetstream**
+- **Add custom middleware for extra features**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### User side
+- **Manage User Profile**
+- **User can order food**
+- **User can contact to admin**
 
-## Security Vulnerabilities
+### Admin Side
+- **Manage Admin Profile**
+- **Manage Admin List**
+- **Manage Category**
+- **Manage Product**
+- **Manage User**
+- **Manage Order**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+In order to run this project you need:
+
+```
+    php >= 7.0.0
+    laravel >= 8.0
+    mysql >- 8.0
+```
+
+### Setup
+
+Clone this repository to your desired folder:
+
+```bash
+  git clone https://github.com/HtetWaiYan7191/laravel-food-order-app
+```
+
+You need to setup database for these project
+
+```
+  DB_CONNECTION = mysql
+  DB_DATABASE        = your database name
+```
+
+or you can use your own database and change the ```.env``` file 
+
+
+### Install
+
+Install this project with:
+
+```bash
+  cd laravel-food-order-app
+  npm install
+  composer install
+```
+
+it will install the required gemfile for running the project
+
+### Usage
+
+to use this project:
+
+```php artisan migrate
+  php artisan serve
+```
+
+it will run the the server on ```http://127.0.0.1:8000/``
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## 👥 Author <a name="author"></a>
+
+👤 **Htet Wai Yan**
+
+- GitHub: [@HtetWaiYan7191](https://github.com/HtetWaiYan7191)
+- LinkedIn: [Htet Wai Yan](https://www.linkedin.com/in/htet-wai-yan19/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- **Improve user interface**
+- **Add rating system**
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/HtetWaiYan7191/laravel-food-order-app/issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project you can share this project to your friend
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to thank code lab myanmar for this project and required resources.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
