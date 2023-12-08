@@ -23,6 +23,26 @@ class AdminController extends Controller
         return view('admin.account.list', compact('admins'));
     }
 
+    public function userList() {
+        $users = User::when(request('key'), function($query, $key) {
+            $query->where('name', 'like', '%'. $key .'%');
+        })
+        ->orderBy('id', 'desc')
+        ->where('role', 'user')
+        ->paginate(3);
+        return view('admin.user.list', compact('users'));
+    }
+
+    public function changeUserRole(Request $request) {
+        logger($request->toArray());
+        User::where('id', $request->userId)->update(['role' => $request->role]);
+        $response = [
+            'messsage' => 'user role changed it to admin ...',
+            'status' => 'success',
+        ];
+        return response()->json($response, 200);
+    }
+
     public function changePasswordPage() {
         return view('admin.account.changePassword');
     }

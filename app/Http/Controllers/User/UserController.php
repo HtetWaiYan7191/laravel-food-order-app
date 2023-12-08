@@ -20,8 +20,8 @@ class UserController extends Controller
     public function home() {
         $pizzas = Product::orderBy('created_at', 'desc')->get();
         $categories = Category::get();
-        $carts = Cart::get();
-        $orders = Order::get();
+        $carts = Cart::where('user_id', Auth::user()->id)->get();
+        $orders = Order::where('user_id', Auth::user()->id)->get();
         return view('user.main.home', compact('pizzas', 'categories', 'carts', 'orders'));
     }
 
@@ -32,7 +32,7 @@ class UserController extends Controller
     }
 
     public function history() {
-        $orders = Order::orderBy('id', 'desc')->paginate(4);
+        $orders = Order::orderBy('id', 'desc')->where('user_id', Auth::user()->id)->paginate(4);
         return view('user.main.history', compact('orders'));
     }
 

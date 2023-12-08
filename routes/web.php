@@ -16,6 +16,10 @@ Route::middleware(['auth'])->group(function () {
 
     // categories 
     Route::middleware(['admin_auth'])->group(function () {
+        //user list 
+
+        Route::get('user/list', [AdminController::class, 'userList'])->name('user#list');
+        Route::get('user/changeUserRole', [AdminController::class, 'changeUserRole'])->name('user#changeUserRole');
         //categories 
         Route::prefix('category')->group(function () {
             Route::get('list', [CategoryController::class, 'list'])->name('category#list');
