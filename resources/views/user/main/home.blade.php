@@ -78,6 +78,7 @@
                                         <option value="">Choose Options</option>
                                         <option value="asc">Ascending</option>
                                         <option value="desc">Descending</option>
+                                        <option value="popular">Most Popular</option>
                                     </select>
                                 </div>
                                 <div class="btn-group ml-2">
@@ -189,6 +190,44 @@
                         url: 'http://127.0.0.1:8000/user/ajax/pizzas',
                         data: {
                             'status': 'desc'
+                        },
+                        dataType: 'json', //essential
+                        success: function(response) {
+                            $list = '';
+                            for ($i = 0; $i < response.length; $i++) {
+                                $list += `
+                            <div class="col-lg-4 col-md-6 col-sm-6 pb-1 " >
+                            <div class="product-item bg-light mb-4" id="myForm">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" style="height: 230px"
+                                        src="{{ asset('storage/${response[$i].image}') }}" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square cartBtn"><i
+                                                class="fa fa-shopping-cart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href=""><i
+                                                class="fa-solid fa-circle-info"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">${response[$i].name}</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>${response[$i].price}</h5>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            `;
+                            }
+                            $('#dataList').html($list);
+                        }
+                    })
+                } else if ($eventOption == 'popular') {
+                    $.ajax({
+                        type: 'get',
+                        url: 'http://127.0.0.1:8000/user/ajax/pizzas',
+                        data: {
+                            'status': 'popular'
                         },
                         dataType: 'json', //essential
                         success: function(response) {

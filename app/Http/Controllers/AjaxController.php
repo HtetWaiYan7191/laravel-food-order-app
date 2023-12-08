@@ -15,8 +15,10 @@ class AjaxController extends Controller
     public function pizzaList(Request $request) {
         if($request->status == 'asc') {
             $pizzas = Product::orderBy('created_at', 'asc')->get();
-        } else {
+        } else if($request->status = 'desc') {
             $pizzas = Product::orderBy('created_at', 'desc')->get();
+        } else {
+            $pizzas = Product::orderBy('view_count', 'asc')->get();
         }
         return response()->json($pizzas, 200);
     }
