@@ -81,7 +81,7 @@ class AjaxController extends Controller
 
             return response()->json($orders, 200);
         }
-        else if($request->status != 2) {
+        else {
             $orders = Order::where('status', $request->status)
             ->join('users', 'orders.user_id', '=', 'users.id')
             ->join('order_lists', 'orders.id', '=', 'order_lists.order_id')
@@ -91,10 +91,7 @@ class AjaxController extends Controller
             ->distinct()
             ->get();
             return response()->json($orders, 200);
-        } else {
-
-            return response()->json([], 200);
-        }
+        } 
     }
 
     public function clearCart() {

@@ -150,6 +150,7 @@
                                             <select class="form-control orderStatus" name="orderStatus">
                                                 <option value="0" class="form-control" {{ $order->status == 0 ? 'selected' : '' }}>pending</option>
                                                 <option value="1" class="form-control" {{ $order->status == 1 ? 'selected' : '' }}>approve</option>
+                                                <option value="2" class="form-control"{{ $order->status == 2 ? 'selected' : '' }} >reject</option>
                                             </select>
                                         </td>
                                     </tr>                                    @endforeach
@@ -194,7 +195,7 @@
             dataType: 'json',
             success: function(response) {
                 if (response.status == 'success') {
-                    window.location.href = 'http://127.0.0.1:8000/order/list';
+                    window.location.reload();
                 }
             }
         });
@@ -249,6 +250,8 @@ $('#filterStatus').change(function() {
                         <select class="form-control orderStatus" name="orderStatus">
                             <option value="0" class="form-control" ${response[i].status == 0 ? 'selected' : ''}>pending</option>
                             <option value="1" class="form-control" ${response[i].status == 1 ? 'selected' : ''}>approve</option>
+                            <option value="1" class="form-control" ${response[i].status == 2 ? 'selected' : ''}>reject</option>
+
                         </select>
                     </td>
                 </tr>

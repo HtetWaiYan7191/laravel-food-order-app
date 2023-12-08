@@ -76,19 +76,10 @@
                                 <div class="btn-group">
                                     <select name="" id="sortingOption" class="form-control">
                                         <option value="">Choose Options</option>
-                                        <option value="asc">Ascending</option>
-                                        <option value="desc">Descending</option>
+                                        <option value="asc">Oldest</option>
+                                        <option value="desc">Newest</option>
                                         <option value="popular">Most Popular</option>
                                     </select>
-                                </div>
-                                <div class="btn-group ml-2">
-                                    <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                        data-toggle="dropdown">Showing</button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">10</a>
-                                        <a class="dropdown-item" href="#">20</a>
-                                        <a class="dropdown-item" href="#">30</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
