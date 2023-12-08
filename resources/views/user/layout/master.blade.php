@@ -87,7 +87,14 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="{{route('user#home')}}" class="nav-item nav-link active">Home</a>
+                            @if (Request::is('orderList/*'))
+                            <a href="{{ route('user#history') }}" class="nav-item nav-link active">
+                                <i class="fa-solid fa-arrow-left me-1"></i> Back
+                            </a>
+                        @endif
+
+                            <a href="{{ route('user#home') }}" class="nav-item nav-link {{ Request::routeIs('user/history') || ('user/home') ? 'active' : '' }}
+                            ">Home</a>
                             <a href="{{ route('user#carts')}}" class="nav-item nav-link">My Cart</a>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
