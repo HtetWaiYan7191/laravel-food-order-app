@@ -44,6 +44,7 @@
     <li><a href="https://www.php.net/docs.php">PHP</a></li>
     <li><a href="https://laravel.com/docs/10.x/installation">Laravel</a></li>
     <li><a href="https://api.jquery.com/">jQuery</a></li>
+     <li><a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Bootstrap</a></li>
 
 </details>
 <details>
